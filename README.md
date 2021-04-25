@@ -1,6 +1,6 @@
 # Study Elasticsearch with Ktor
 
-* [Elasticsearch][elasticsearc]
+* [Elasticsearch][elasticsearch]
 * [Ktor][ktor]
 
 [elasticsearch]: https://www.elastic.co/jp/elasticsearch/

@@ -14,9 +14,11 @@ see: https://gohugo.io/getting-started/quick-start/
 brew install hugo
 cd docs
 hugo new site "study-elasticsearch-with-ktor"
+git submodule add git@github.com:thegeeklab/hugo-geekdoc.git docs/src/themes/hugo-geekdoc
 ```
 
 ### Build
 ```shell
+cd docs/src
 hugo -D
 ```

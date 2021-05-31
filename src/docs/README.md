@@ -10,7 +10,7 @@ brew install hugo
 hugo new site "study-elasticsearch-with-ktor"
 ```
 3. create [`config.toml`](./config.toml)
-  * `publishdir` must be `${repositoryRoot}/docs` because GitHub Pages requires static pages are in root or docs directory.
+    * `publishdir` must be `${repositoryRoot}/docs` because GitHub Pages requires static pages are in root or docs directory.
 4. install theme
 ```shell
 # run on ${repositoryRoot}/src/docs
@@ -23,7 +23,7 @@ npx gulp default
 ```shell
 hugo new posts/first-post.md
 ```
-  * write `first-post.md`
+    * write `first-post.md`
 6. serve
 ```shell
 hugo server -D # -D: include content marked as draft

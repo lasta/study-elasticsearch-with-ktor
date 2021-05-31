@@ -2,6 +2,7 @@ package me.lasta.plugins
 
 import io.ktor.application.Application
 import io.ktor.application.call
+import io.ktor.application.feature
 import io.ktor.application.install
 import io.ktor.features.StatusPages
 import io.ktor.http.HttpStatusCode
@@ -11,6 +12,9 @@ import io.ktor.locations.Locations
 import io.ktor.locations.get
 import io.ktor.response.respond
 import io.ktor.response.respondText
+import io.ktor.routing.HttpMethodRouteSelector
+import io.ktor.routing.Route
+import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.routing
 
@@ -32,6 +36,12 @@ fun Application.configureRouting() {
         }
         get<Type.List> {
             call.respondText("Inside $it")
+        }
+        get("/routes") {
+            val root = feature(Routing)
+            val allRoutes = root.list(root)
+            val allRoutesWithMethod = allRoutes.filter { it.selector is HttpMethodRouteSelector }
+            call.respond(allRoutesWithMethod.map(Route::toString))
         }
         install(StatusPages) {
             exception<AuthenticationException> {
@@ -62,3 +72,5 @@ data class Type(val name: String) {
 
 class AuthenticationException : RuntimeException()
 class AuthorizationException : RuntimeException()
+
+private fun Route.list(root: Route): List<Route> = listOf(root) + root.children.flatMap { this.list(it) }

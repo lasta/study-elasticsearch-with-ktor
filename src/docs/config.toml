@@ -3,6 +3,7 @@ languageCode = "ja-jp"
 title = "Study Elasticsearch with Ktor"
 theme = "hugo-geekdoc"
 publishdir = "../../docs/"
+hasCJKLanguage = true
 
 ############################################################
 # https://geekdocs.de/usage/getting-started/

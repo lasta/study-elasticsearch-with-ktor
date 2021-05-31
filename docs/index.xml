@@ -7,14 +7,5 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <lastBuildDate>Mon, 31 May 2021 19:00:37 +0900</lastBuildDate><atom:link href="https://lasta.github.io/study-elasticsearch-with-ktor/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Study Elasticsearch with Ktor</title>
-      <link>https://lasta.github.io/study-elasticsearch-with-ktor/posts/my-first-post/</link>
-      <pubDate>Mon, 31 May 2021 19:00:37 +0900</pubDate>
-      
-      <guid>https://lasta.github.io/study-elasticsearch-with-ktor/posts/my-first-post/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>

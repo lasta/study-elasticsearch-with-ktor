@@ -2,7 +2,7 @@ baseURL = "http://example.org/"
 languageCode = "ja-jp"
 title = "Study Elasticsearch with Ktor"
 theme = "hugo-geekdoc"
-publishdir = "../build/"
+publishdir = "../../docs/"
 
 ############################################################
 # https://geekdocs.de/usage/getting-started/

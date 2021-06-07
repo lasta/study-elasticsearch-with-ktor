@@ -41,3 +41,6 @@ git push
 ```
 9. setup [GitHub Pages](https://pages.github.com/)
 
+## note
+Hugo has no syntax highlighter for Kibana style query.
+The one for dockerfile looks like it, so I use that.

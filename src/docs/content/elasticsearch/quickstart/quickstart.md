@@ -753,7 +753,7 @@ DELETE _data_stream/logs-my_app-default
 
 ### コンテナの停止、削除、ネットワークの削除
 1. コンテナの停止
-```shell
+```Shell
 docker stop es01-test
 docker stop kib01-test
 ```

@@ -89,7 +89,7 @@ POST logs-my_app-default/_doc
     * Elasticsearch は backing index の名前を自動的に生成する
 * インデックス内のドキュメントのユニークな `_id`
 
-```json
+```json {hl_lines=[2,4]}
 {
   "_index" : ".ds-logs-my_app-default-2021.06.02-000001",
   "_type" : "_doc",
@@ -125,7 +125,7 @@ PUT logs-my_app-default/_bulk
 
 下記は `logs-my_app-default` 内の前エントリを取得し `@timestamp` の降順で取得するクエリです。
 
-```dockerfile
+```dockerfile {hl_lines=[4,8]}
 GET logs-my_app-default/_search
 {
   "query": {
@@ -142,7 +142,7 @@ GET logs-my_app-default/_search
 デフォルトでは、 `hits` セクションに検索結果上位10ドキュメントが返却されます。
 各 `_source` には index したオリジナルの JSON オブジェクトが格納されます。
 
-```json
+```json {hl_lines=["11-14","22-26","37-41","52-56"]}
 {
   "took" : 359,
   "timed_out" : false,
@@ -214,7 +214,7 @@ GET logs-my_app-default/_search
 レスポンスから source を除外するには、 `_source` パラメータに `false` を指定します。
 その上で、 `fields` パラメータにて必要なフィールドを指定します。
 
-```dockerfile
+```dockerfile {hl_lines=["6-8",9]}
 GET logs-my_app-default/_search
 {
   "query": {
@@ -234,7 +234,7 @@ GET logs-my_app-default/_search
 
 レスポンスには、ヒットしたドキュメントのフィールドの値が平坦な配列として含まれます。
 
-```json
+```json {hl_lines=["22-26","37-40","50-54"]}
 {
   "took" : 134,
   "timed_out" : false,
@@ -302,7 +302,7 @@ GET logs-my_app-default/_search
 特定の間や IP レンジで検索する場合は、 `range` クエリを使用します。
 
 #### 絶対日時指定
-```dockerfile
+```dockerfile {hl_lines=["4-9"]}
 GET logs-my_app-default/_search
 {
   "query": {
@@ -378,9 +378,8 @@ GET logs-my_app-default/_search
 #### 相対日時指定
 日付関数を用いて相対的な時間範囲を定義できます。
 下記のクエリで、過去の日付のデータを検索できます。
-(投入済のログはヒットしないクエリです。)
 
-```dockerfile
+```dockerfile {hl_lines=["4-9"]}
 GET logs-my_app-default/_search
 {
   "query": {
@@ -402,6 +401,8 @@ GET logs-my_app-default/_search
   ]
 }
 ```
+
+投入済のログには該当するものがないため、空が返却されます。
 
 ```json
 {
@@ -432,7 +433,7 @@ GET logs-my_app-default/_search
 
 [Define runtime fields in a search request]: https://www.elastic.co/guide/en/elasticsearch/reference/current/runtime-search-request.html
 
-```dockerfile
+```dockerfile {hl_lines=["3-15","24-27"]}
 GET logs-my_app-default/_search
 {
   "runtime_mappings": {
@@ -469,7 +470,9 @@ GET logs-my_app-default/_search
 }
 ```
 
-```json
+`fields.source.ip` として返却されます。
+
+```json {hl_lines=["26-28","43-45"]}
 {
   "took" : 14,
   "timed_out" : false,
@@ -529,7 +532,7 @@ GET logs-my_app-default/_search
 `bool` クエリを用いることで、複数のクエリ結合することができます。
 下記のクエリは、 `@timestamp` と動的フィールド`source.ip` の2つの `range` クエリを結合しています。
 
-```dockerfile
+```dockerfile {hl_lines=["16-37"]}
 GET logs-my_app-default/_search
 {
   "runtime_mappings": {
@@ -753,7 +756,7 @@ DELETE _data_stream/logs-my_app-default
 
 ### コンテナの停止、削除、ネットワークの削除
 1. コンテナの停止
-```Shell
+```shell
 docker stop es01-test
 docker stop kib01-test
 ```

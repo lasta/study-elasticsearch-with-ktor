@@ -4,6 +4,7 @@ title: Study Elasticsearch with Ktor
 theme: hugo-geekdoc
 publishdir: ../../docs/
 hasCJKLanguage: true
+useHLJS: true
 
 ############################################################
 # https://geekdocs.de/usage/getting-started/
@@ -11,8 +12,8 @@ hasCJKLanguage: true
 pluralizeListTitles: false
 
 # Geekdoc required configuration
-pygmentsUseClasses: true
 pygmentsCodeFences: true
+pygmentsUseClasses: false
 disablePathToLower: true
 
 # Needed for mermaid shortcodes
@@ -30,6 +31,6 @@ markup:
     lineNoStart: 1
     lineNos: true
     lineNumbersInTable: true
-    style: solarized-dark256
+    style: dracula
     tabWidth: 4
 

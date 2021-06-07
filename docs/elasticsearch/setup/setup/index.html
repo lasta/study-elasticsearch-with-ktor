@@ -10,7 +10,7 @@
 
 
 
-    <meta name="description" content="Study Elasticsearch with Ktor">
+    <meta name="description" content="この章には下記に関する情報があります。 ダウンロード インストール 起動 設定 サポートされているプラットフォーム OS や JVM に関する推奨環境は こちら に記載">
 
 
 
@@ -160,7 +160,11 @@
             <li>
             
             
-                <span class="flex">Set up Elasticsearch</span>
+                <span class="flex">
+                    <a href="/study-elasticsearch-with-ktor/elasticsearch/setup/setup/" class="gdoc-nav__entry is-active">
+                        Set up Elasticsearch
+                    </a>
+                </span>
             
             
 
@@ -170,6 +174,30 @@
             
         
     </ul>
+
+            
+            </li>
+            
+            
+            
+
+            
+            
+            
+            
+            
+            
+
+            <li>
+            
+            
+                <span class="flex">
+                    <a href="/study-elasticsearch-with-ktor/ktor/" class="gdoc-nav__entry ">
+                        Ktor
+                    </a>
+                </span>
+            
+            
 
             
             </li>
@@ -247,7 +275,36 @@
 
     <article class="gdoc-markdown gdoc-markdown__align--left">
         <h1>Set up Elasticsearch</h1>
-        
+        <p>この章には下記に関する情報があります。</p>
+<ul>
+<li>ダウンロード</li>
+<li>インストール</li>
+<li>起動</li>
+<li>設定</li>
+</ul>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="サポートされているプラットフォーム">
+        サポートされているプラットフォーム
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/setup/#サポートされているプラットフォーム" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor サポートされているプラットフォーム" href="#%e3%82%b5%e3%83%9d%e3%83%bc%e3%83%88%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>OS や JVM に関する推奨環境は <a class="gdoc-markdown__link" href="https://www.elastic.co/support/matrix">こちら</a> に記載されています。
+サポート外の環境でも動作する可能性はあります。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="java-jvm-バージョン">
+        Java (JVM) バージョン
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/setup/#java-jvm-バージョン" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Java (JVM) バージョン" href="#java-jvm-%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch は Java で開発されており、各ディストリビューションには JDK メンテナから提供されたバンドル版の OpenJDK (GPLv2+CE) が含まれています。
+Elasticsearch のホームディレクトリ配下の <code>jdk</code> ディレクトリに推奨 JVM である OpenJDK が配置されています。</p>
+<p>自前でインストールした JVM を利用する場合は、 Java Home のパスを環境変数 <code>ES_JAVA_HOME</code> に指定してください。
+その場合、バンドルされている Java の LTS バージョンを使用することを推奨します。
+既知の不具合を含む Java バージョンが指定されている場合、 Elasticsearch は起動しません。
+自前でインストールした JVM を使用する場合、バンドルされている JVM のディレクトリは削除して ok です。</p>
+
 
     </article>
 

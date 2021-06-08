@@ -1,5 +1,6 @@
 # Study Elasticsearch with Ktor
 Document status: [![github pages](https://github.com/lasta/study-elasticsearch-with-ktor/actions/workflows/gh-pages.yml/badge.svg)](https://github.com/lasta/study-elasticsearch-with-ktor/actions/workflows/gh-pages.yml)
+Application status: [![Test application](https://github.com/lasta/study-elasticsearch-with-ktor/actions/workflows/ktor.yml/badge.svg)](https://github.com/lasta/study-elasticsearch-with-ktor/actions/workflows/ktor.yml)
 
 * [Elasticsearch][elasticsearch]
 * [Ktor][ktor]

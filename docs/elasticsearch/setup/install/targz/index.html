@@ -10,11 +10,11 @@
 
 
 
-    <meta name="description" content="Study Elasticsearch with Ktor">
+    <meta name="description" content="Linux および MacOS 向けの tar.gz アーカイブを用いたインストール手順 最新安定版の Elasticsearch は Download Elasticsearch にあります。 過去のバージョンは Past Releases page にあります。 Elasticsearch は OpenJDK がバンドルされ">
 
 
 
-    <title>Elasticsearch | Study Elasticsearch with Ktor</title>
+    <title>tar.gz (Linux, MacOS) | Study Elasticsearch with Ktor</title>
 
     <link rel="icon" href="/study-elasticsearch-with-ktor/favicon/favicon-32x32.png" type="image/x-icon">
 
@@ -35,7 +35,6 @@
 <link rel="preload" href="/study-elasticsearch-with-ktor/custom.css" as="style">
 <link rel="stylesheet" href="/study-elasticsearch-with-ktor/custom.css" media="all">
 
-<link rel="alternate" type="application/rss+xml" href="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/index.xml" title="Study Elasticsearch with Ktor" />
 
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
@@ -681,7 +680,7 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
             
             
                 <span class="flex">
-                    <a href="/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/" class="gdoc-nav__entry ">
+                    <a href="/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/" class="gdoc-nav__entry is-active">
                         tar.gz (Linux, MacOS)
                     </a>
                 </span>
@@ -787,7 +786,31 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
         
     
     
-        <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/' href='/study-elasticsearch-with-ktor/'><span itemprop='name'>Study Elasticsearch with Ktor</span></a><meta itemprop='position' content='2' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>Elasticsearch</span><meta itemprop='position' content='3' /></li>
+        
+        
+        
+        
+    
+    
+        
+        
+        
+        
+    
+    
+        
+        
+        
+        
+    
+    
+        <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/' href='/study-elasticsearch-with-ktor/'><span itemprop='name'>Study Elasticsearch with Ktor</span></a><meta itemprop='position' content='2' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/elasticsearch/' href='/study-elasticsearch-with-ktor/elasticsearch/'><span itemprop='name'>Elasticsearch</span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/elasticsearch/setup/' href='/study-elasticsearch-with-ktor/elasticsearch/setup/'><span itemprop='name'>Set up Elasticsearch</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/elasticsearch/setup/install/' href='/study-elasticsearch-with-ktor/elasticsearch/setup/install/'><span itemprop='name'>Installing Elasticsearch</span></a><meta itemprop='position' content='5' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>tar.gz (Linux, MacOS)</span><meta itemprop='position' content='6' /></li>
+    
+
+    
+
+    
+
     
 
     
@@ -798,9 +821,278 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
     
 </div>
 
+
     <article class="gdoc-markdown gdoc-markdown__align--left">
-        <h1>Elasticsearch</h1>
-        
+        <h1>tar.gz (Linux, MacOS)</h1>
+        <p>Linux および MacOS 向けの <code>tar.gz</code> アーカイブを用いたインストール手順</p>
+<p>最新安定版の Elasticsearch は <a class="gdoc-markdown__link" href="https://www.elastic.co/downloads/elasticsearch">Download Elasticsearch</a> にあります。
+過去のバージョンは <a class="gdoc-markdown__link" href="https://www.elastic.co/downloads/past-releases">Past Releases page</a> にあります。</p>
+<blockquote class="gdoc-hint info">
+  <p>Elasticsearch は OpenJDK がバンドルされています。 (GPLv2+CE)</p>
+<p>自前の JVM を利用する場合は、 <a class="gdoc-markdown__link" href="/study-elasticsearch-with-ktor/elasticsearch/setup/#java-jvm-%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3">こちら</a> を確認してください。</p>
+
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h2 id="for-linux">
+        for Linux
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#for-linux" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor for Linux" href="#for-linux">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch v7.13.1 の例です。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span class="lnt" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span class="lnt" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span class="lnt" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span class="lnt" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.1-linux-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.1-linux-x86_64.tar.gz.sha512
+shasum -a <span class="m">512</span> -c elasticsearch-7.13.1-linux-x86_64.tar.gz.sha512 <span class="c1"># 1.</span>
+tar -xzf elasticsearch-7.13.1-linux-x86_64.tar.gz
+<span class="nb">cd</span> elasticsearch-7.13.1/ <span class="c1"># 2.</span>
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li><code>elasticsearch-{version}-linux-x86_64.tar.gz: OK</code> と出力されれば ok</li>
+<li>このディレクトリが <code>$ES_HOME</code> となる</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="for-macos">
+        for MacOS
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#for-macos" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor for MacOS" href="#for-macos">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch v7.13.1 の例です。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span><span class="lnt" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2">2</a>
+</span><span class="lnt" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3">3</a>
+</span><span class="lnt" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4">4</a>
+</span><span class="lnt" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5">5</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.1-darwin-x86_64.tar.gz
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.13.1-darwin-x86_64.tar.gz.sha512
+shasum -a <span class="m">512</span> -c elasticsearch-7.13.1-darwin-x86_64.tar.gz.sha512 
+tar -xzf elasticsearch-7.13.1-darwin-x86_64.tar.gz
+<span class="nb">cd</span> elasticsearch-7.13.1/ 
+</code></pre></td></tr></table>
+</div>
+</div><ol>
+<li><code>elasticsearch-{version}-darwin-x86_64.tar.gz: OK</code> と出力されれば ok</li>
+<li>このディレクトリが <code>$ES_HOME</code> となる</li>
+</ol>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="cli-から-elasitcsearch-を起動">
+        CLI から Elasitcsearch を起動
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#cli-から-elasitcsearch-を起動" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor CLI から Elasitcsearch を起動" href="#cli-%e3%81%8b%e3%82%89-elasitcsearch-%e3%82%92%e8%b5%b7%e5%8b%95">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">./bin/elasticsearch
+</code></pre></td></tr></table>
+</div>
+</div><blockquote class="gdoc-hint info">
+  Elasticsearch に同梱されているスクリプトは、配列をサポートするバージョンの bash (4系以降) を必要とし、 /bin/bash で利用できることを前提としています。
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h2 id="elasticsearch-が起動していることの確認">
+        Elasticsearch が起動していることの確認
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#elasticsearch-が起動していることの確認" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Elasticsearch が起動していることの確認" href="#elasticsearch-%e3%81%8c%e8%b5%b7%e5%8b%95%e3%81%97%e3%81%a6%e3%81%84%e3%82%8b%e3%81%93%e3%81%a8%e3%81%ae%e7%a2%ba%e8%aa%8d">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p><code>localhost:9200</code> に HTTP リクエストを送り、期待通りに返却されることを確認します。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">curl -X GET <span class="s2">&#34;localhost:9200/?pretty&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Docker 版の例ですが、下記と似たようなレスポンスが返却されれば ok です。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1"> 1</a>
+</span><span class="lnt" id="2"><a style="outline: none; text-decoration:none; color:inherit" href="#2"> 2</a>
+</span><span class="lnt" id="3"><a style="outline: none; text-decoration:none; color:inherit" href="#3"> 3</a>
+</span><span class="lnt" id="4"><a style="outline: none; text-decoration:none; color:inherit" href="#4"> 4</a>
+</span><span class="lnt" id="5"><a style="outline: none; text-decoration:none; color:inherit" href="#5"> 5</a>
+</span><span class="lnt" id="6"><a style="outline: none; text-decoration:none; color:inherit" href="#6"> 6</a>
+</span><span class="lnt" id="7"><a style="outline: none; text-decoration:none; color:inherit" href="#7"> 7</a>
+</span><span class="lnt" id="8"><a style="outline: none; text-decoration:none; color:inherit" href="#8"> 8</a>
+</span><span class="lnt" id="9"><a style="outline: none; text-decoration:none; color:inherit" href="#9"> 9</a>
+</span><span class="lnt" id="10"><a style="outline: none; text-decoration:none; color:inherit" href="#10">10</a>
+</span><span class="lnt" id="11"><a style="outline: none; text-decoration:none; color:inherit" href="#11">11</a>
+</span><span class="lnt" id="12"><a style="outline: none; text-decoration:none; color:inherit" href="#12">12</a>
+</span><span class="lnt" id="13"><a style="outline: none; text-decoration:none; color:inherit" href="#13">13</a>
+</span><span class="lnt" id="14"><a style="outline: none; text-decoration:none; color:inherit" href="#14">14</a>
+</span><span class="lnt" id="15"><a style="outline: none; text-decoration:none; color:inherit" href="#15">15</a>
+</span><span class="lnt" id="16"><a style="outline: none; text-decoration:none; color:inherit" href="#16">16</a>
+</span><span class="lnt" id="17"><a style="outline: none; text-decoration:none; color:inherit" href="#17">17</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;name&#34;</span> <span class="p">:</span> <span class="s2">&#34;d1c7ea7b50cf&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;cluster_name&#34;</span> <span class="p">:</span> <span class="s2">&#34;docker-cluster&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;cluster_uuid&#34;</span> <span class="p">:</span> <span class="s2">&#34;Udx0AkrqR8i-TeUcxAQtKQ&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version&#34;</span> <span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;number&#34;</span> <span class="p">:</span> <span class="s2">&#34;7.13.1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build_flavor&#34;</span> <span class="p">:</span> <span class="s2">&#34;default&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build_type&#34;</span> <span class="p">:</span> <span class="s2">&#34;docker&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build_hash&#34;</span> <span class="p">:</span> <span class="s2">&#34;9a7758028e4ea59bcab41c12004603c5a7dd84a9&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build_date&#34;</span> <span class="p">:</span> <span class="s2">&#34;2021-05-28T17:40:59.346932922Z&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;build_snapshot&#34;</span> <span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&#34;lucene_version&#34;</span> <span class="p">:</span> <span class="s2">&#34;8.8.2&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;minimum_wire_compatibility_version&#34;</span> <span class="p">:</span> <span class="s2">&#34;6.8.0&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;minimum_index_compatibility_version&#34;</span> <span class="p">:</span> <span class="s2">&#34;6.0.0-beta1&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;tagline&#34;</span> <span class="p">:</span> <span class="s2">&#34;You Know, for Search&#34;</span>
+<span class="p">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>-q</code> または <code>--quiet</code> をコマンドラインオプションに指定することで、標準出力 (<code>stdout</code>) へのログ出力を無効化できます。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="デーモン起動">
+        デーモン起動
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#デーモン起動" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor デーモン起動" href="#%e3%83%87%e3%83%bc%e3%83%a2%e3%83%b3%e8%b5%b7%e5%8b%95">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch をデーモンとして起動する場合は、 <code>-d</code> オプションをつけます。
+<code>-p</code> オプションでプロセスIDをファイルに記録できます。</p>
+<p>ログファイルは <code>$ES_HOME/logs/</code> 配下に配置されます。
+Elasticsearch を停止するには、 <code>pid</code> ファイルに記録されているプロセスIDを指定します。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">pkill -F pid
+</code></pre></td></tr></table>
+</div>
+</div><blockquote class="gdoc-hint info">
+  <code>.tar.gz</code> パッケージ版の Elasticsearch には <code>systemd</code> モジュールが含まれていません。
+Elasticsearch をサービスとして管理する場合は、代わりに Debian または RPM パッケージを利用してください。
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h2 id="コマンドラインから-elasticsearch-を設定する">
+        コマンドラインから Elasticsearch を設定する
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#コマンドラインから-elasticsearch-を設定する" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor コマンドラインから Elasticsearch を設定する" href="#%e3%82%b3%e3%83%9e%e3%83%b3%e3%83%89%e3%83%a9%e3%82%a4%e3%83%b3%e3%81%8b%e3%82%89-elasticsearch-%e3%82%92%e8%a8%ad%e5%ae%9a%e3%81%99%e3%82%8b">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch はデフォルトで <code>$ES_HOME/config/elasticsearch.yml</code> に記載されている設定を読み込みます。
+設定ファイルのフォーマットは <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html">Configuring Elasticsearch</a> に説明があります。</p>
+<p>設定ファイルで指定できる設定は、 <code>-E</code> オプションを用いることでコマンドラインでも指定できます。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt" id="1"><a style="outline: none; text-decoration:none; color:inherit" href="#1">1</a>
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-shell" data-lang="shell">./bin/elasticsearch -d -Ecluster.name<span class="o">=</span>my_cluster -Enode.name<span class="o">=</span>node_1
+</code></pre></td></tr></table>
+</div>
+</div><blockquote class="gdoc-hint info">
+  通常、クラスタ全体の設定 (<code>cluster.name</code> など) は <code>elasticsearch.yml</code> で定義します。
+ノード固有の設定 (<code>node.name</code> など) はコマンドラインで指定します。
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h2 id="ディレクトリ構成">
+        ディレクトリ構成
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#ディレクトリ構成" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor ディレクトリ構成" href="#%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e6%a7%8b%e6%88%90">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>配布されている圧縮ファイルは、自己完結型です。
+すべてのファイルとディレクトリは、アーカイブを解凍したときに作成されるディレクトリである <code>$ES_HOME</code> に含まれています。</p>
+<p>Elasticsearch を使い始めるときは別途ディレクトリ等をつくる必要はなく、アンインストールするときは <code>$ES_HOME</code> を削除するだけで完了します。
+ただし、あとで重要なデータを誤って削除してしまわないように、 <code>config</code> ディレクトリ、 <code>data</code> ディレクトリ、 <code>logs</code> ディレクトリをデフォルト以外の場所に変更することをおすすめします。</p>
+<table>
+<thead>
+<tr>
+<th>種別</th>
+<th>説明</th>
+<th>デフォルトの場所</th>
+<th>設定名</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>home</strong></td>
+<td>Elasticsearch のホームディレクトリ または <code>$ES_HOME</code></td>
+<td>アーカイブを解凍した場所</td>
+<td><code>$ES_HOME</code></td>
+</tr>
+<tr>
+<td><strong>bin</strong></td>
+<td>ノードの起動 (<code>elasticsearch</code>) や<br />プラグインのインストール (<code>elasticsearch-plugin</code>) などを<br />行うためのバイナリスクリプト群</td>
+<td><code>$ES_HOME/bin</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>conf</strong></td>
+<td><code>elasticsearch.yml</code> を始めとした設定ファイル群</td>
+<td><code>$ES_HOME/config</code></td>
+<td><code>$ES_PATH_CONF</code></td>
+</tr>
+<tr>
+<td><strong>data</strong></td>
+<td>各 index やノードに割り当てられた shard データ群</td>
+<td><code>$ES_HOME/data</code></td>
+<td><code>path.data</code></td>
+</tr>
+<tr>
+<td><strong>logs</strong></td>
+<td>ログファイル群</td>
+<td><code>$ES_HOME/logs</code></td>
+<td><code>path.logs</code></td>
+</tr>
+<tr>
+<td><strong>plugins</strong></td>
+<td>プラグインファイル群<br />(各プラグインはサブディレクトリ配下に配置される)</td>
+<td><code>$ES_HOME/plugins</code></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>repo</strong></td>
+<td>共有ファイルシステムのリポジトリの場所 (複数指定可能)<br />バックアップ / リストアなどで利用</td>
+<td>設定なし</td>
+<td><code>path.repo</code></td>
+</tr>
+</tbody>
+</table>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="次のステップ">
+        次のステップ
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/install/targz/#次のステップ" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 次のステップ" href="#%e6%ac%a1%e3%81%ae%e3%82%b9%e3%83%86%e3%83%83%e3%83%97">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch のテスト環境が整いました。
+一方で、本格的な開発や本番環境を構築する前に、いくつか追加の設定が必要になります。</p>
+<ul>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html">Elasticsearch の設定を学ぶ</a></li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html">重要な Elasticsearch の設定</a></li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html">重要なシステムの設定</a></li>
+</ul>
+
 
     </article>
 

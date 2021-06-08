@@ -25,22 +25,23 @@ jobs:
       - name: "[debug] show directory layout"
         run: pwd && ls -l && ls -l src/docs/themes && ls -l src/docs/themes/hugo-geekdoc
 
-#      - name: npm for hugo-geekdoc
-#        uses: actions/setup-node@v2
-#        with:
-#          node-version: '14'
-#      - run: npm install src/docs/themes/hugo-geekdoc
-#
-#      - name: npx for hugo-geekdoc
-#        uses: mikeal/npx@1.0.0
-#      - run: npx gulp --cwd src/docs/themes/hugo-geekdoc
-#
-#      - name: Build docs
-#        run: hugo --minify --source src/docs
-#
-#      - name: Deploy
-#        uses: peaceiris/actions-gh-pages@v3
-#        if: github.ref == 'refs/heads/main'
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: ./docs
+      - name: Install npm
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies of hugo-geekdoc
+        run: npm install src/docs/themes/hugo-geekdoc
+
+      - name: Install hugo-geekdoc
+        run: gulp --cwd src/docs/themes/hugo-geekdoc
+
+      - name: Build docs
+        run: hugo --minify --source src/docs
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs

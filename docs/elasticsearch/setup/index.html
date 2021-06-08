@@ -2,7 +2,6 @@
 <html lang="en" class="color-toggle-hidden">
 
 <head>
-	<meta name="generator" content="Hugo 0.83.1" />
     <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="color-scheme" content="light dark" />
@@ -11,11 +10,11 @@
 
 
 
-    <meta name="description" content="注意 本ページは Elasticsearch と Ktor に関する個人的なメモです。 前提知識が必要であったり不正確な和訳が含まれていたり、情報が古い場合があります。 最新の正確な情">
+    <meta name="description" content="参照元ドキュメント : Set up Elasticsearch この章には下記に関する情報があります。 ダウンロード インストール 起動 設定 サポートされているプラットフォーム OS や JVM に関">
 
 
 
-    <title>Study Elasticsearch with Ktor</title>
+    <title>Set up Elasticsearch | Study Elasticsearch with Ktor</title>
 
     <link rel="icon" href="/study-elasticsearch-with-ktor/favicon/favicon-32x32.png" type="image/x-icon">
 
@@ -36,7 +35,7 @@
 <link rel="preload" href="/study-elasticsearch-with-ktor/custom.css" as="style">
 <link rel="stylesheet" href="/study-elasticsearch-with-ktor/custom.css" media="all">
 
-<link rel="alternate" type="application/rss+xml" href="https://lasta.github.io/study-elasticsearch-with-ktor/index.xml" title="Study Elasticsearch with Ktor" />
+<link rel="alternate" type="application/rss+xml" href="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/index.xml" title="Study Elasticsearch with Ktor" />
 
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
@@ -628,7 +627,7 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
             
             
                 <span class="flex">
-                    <a href="/study-elasticsearch-with-ktor/elasticsearch/setup/" class="gdoc-nav__entry ">
+                    <a href="/study-elasticsearch-with-ktor/elasticsearch/setup/" class="gdoc-nav__entry is-active">
                         Set up Elasticsearch
                     </a>
                 </span>
@@ -714,7 +713,23 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
             
     
     
-        <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>Study Elasticsearch with Ktor</span><meta itemprop='position' content='2' /></li>
+        
+        
+        
+        
+    
+    
+        
+        
+        
+        
+    
+    
+        <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/' href='/study-elasticsearch-with-ktor/'><span itemprop='name'>Study Elasticsearch with Ktor</span></a><meta itemprop='position' content='2' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/elasticsearch/' href='/study-elasticsearch-with-ktor/elasticsearch/'><span itemprop='name'>Elasticsearch</span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>Set up Elasticsearch</span><meta itemprop='position' content='4' /></li>
+    
+
+    
+
     
 
         </ol>
@@ -724,30 +739,37 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
 </div>
 
     <article class="gdoc-markdown gdoc-markdown__align--left">
-        <h1>Study Elasticsearch with Ktor</h1>
-        <blockquote class="gdoc-hint warning">
-  <p><strong>注意</strong></p>
-<p>本ページは Elasticsearch と Ktor に関する個人的なメモです。
-前提知識が必要であったり不正確な和訳が含まれていたり、情報が古い場合があります。</p>
-<p>最新の正確な情報は公式ドキュメントを参照してください。</p>
+        <h1>Set up Elasticsearch</h1>
+        <p>参照元ドキュメント : <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/setup.html">Set up Elasticsearch</a></p>
+<p>この章には下記に関する情報があります。</p>
 <ul>
-<li><a class="gdoc-markdown__link" href="https://www.elastic.co/jp/elasticsearch/">Elasticsearch</a></li>
-<li><a class="gdoc-markdown__link" href="https://ktor.io/">Ktor</a></li>
+<li>ダウンロード</li>
+<li>インストール</li>
+<li>起動</li>
+<li>設定</li>
 </ul>
-
-</blockquote>
-
 <div class="gdoc-page__anchorwrap">
-    <h2 id="対応バージョン">
-        対応バージョン
-        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/#対応バージョン" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 対応バージョン" href="#%e5%af%be%e5%bf%9c%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3">
+    <h2 id="サポートされているプラットフォーム">
+        サポートされているプラットフォーム
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/#サポートされているプラットフォーム" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor サポートされているプラットフォーム" href="#%e3%82%b5%e3%83%9d%e3%83%bc%e3%83%88%e3%81%95%e3%82%8c%e3%81%a6%e3%81%84%e3%82%8b%e3%83%97%e3%83%a9%e3%83%83%e3%83%88%e3%83%95%e3%82%a9%e3%83%bc%e3%83%a0">
             <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
-</div><ul>
-<li>Elasticsearch 7.13</li>
-<li>Ktor 1.6.0</li>
-</ul>
+</div><p>OS や JVM に関する推奨環境は <a class="gdoc-markdown__link" href="https://www.elastic.co/support/matrix">こちら</a> に記載されています。
+サポート外の環境でも動作する可能性はあります。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="java-jvm-バージョン">
+        Java (JVM) バージョン
+        <a data-clipboard-text="https://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/#java-jvm-バージョン" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Java (JVM) バージョン" href="#java-jvm-%e3%83%90%e3%83%bc%e3%82%b8%e3%83%a7%e3%83%b3">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Elasticsearch は Java で開発されており、各ディストリビューションには JDK メンテナから提供されたバンドル版の OpenJDK (GPLv2+CE) が含まれています。
+Elasticsearch のホームディレクトリ配下の <code>jdk</code> ディレクトリに推奨 JVM である OpenJDK が配置されています。</p>
+<p>自前でインストールした JVM を利用する場合は、 Java Home のパスを環境変数 <code>ES_JAVA_HOME</code> に指定してください。
+その場合、バンドルされている Java の LTS バージョンを使用することを推奨します。
+既知の不具合を含む Java バージョンが指定されている場合、 Elasticsearch は起動しません。
+自前でインストールした JVM を使用する場合、バンドルされている JVM のディレクトリは削除して ok です。</p>
 
 
     </article>

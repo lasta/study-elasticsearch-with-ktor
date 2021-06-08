@@ -22,20 +22,20 @@ draft: true
 ## 自前サーバにインストール
 下記のパッケージフォーマットで提供されいてます。
 
-| Platform       | format   | link                                                          |
-|----------------|----------|---------------------------------------------------------------|
-| Linux, MacOS   | `tar.gz` | [Install Elasticsearch from archive on Linux or MacOS][targz] |
-| Windows        | `zip`    | [Install Elasticsearch with .zip on Windows][winzip]          |
-| Debian         | `deb`    | [Install Elasticsearch with Debian Package][deb]              |
-| RHEL           | `rpm`    | [Install Elasticsearch with RPM][rpm]                         |
-| Windows (beta) | `msi`    | [Install Elasticsearch with Windows MSI Installer][msi]       |
-| Docker         |          | [Install Elasticsearch with Docker][docker]                   |
-| Homebrew       |          | [Install Elasticsearch on macOS with Homebrew][brew]          |
-| Puppet         |          | [puppet-elasticsearch][puppet]                                |
-| Chef           |          | [cookbook-elasticsearch][chef]                                |
-| Ansible        |          | [ansible-elasticsearch][ansible]                              |
+| Platform       | format   | link                                                                                |
+|----------------|----------|-------------------------------------------------------------------------------------|
+| Linux, MacOS   | `tar.gz` | [Install Elasticsearch from archive on Linux or MacOS][targz]                       |
+| Windows        | `zip`    | [Install Elasticsearch with .zip on Windows][winzip] {{< icon "share-square" >}}    |
+| Debian         | `deb`    | [Install Elasticsearch with Debian Package][deb] {{< icon "share-square" >}}        |
+| RHEL           | `rpm`    | [Install Elasticsearch with RPM][rpm] {{< icon "share-square" >}}                   |
+| Windows (beta) | `msi`    | [Install Elasticsearch with Windows MSI Installer][msi] {{< icon "share-square" >}} |
+| Docker         |          | [Install Elasticsearch with Docker][docker] {{< icon "share-square" >}}             |
+| Homebrew       |          | [Install Elasticsearch on macOS with Homebrew][brew] {{< icon "share-square" >}}    |
+| Puppet         |          | [puppet-elasticsearch][puppet] {{< icon "share-square" >}}                          |
+| Chef           |          | [cookbook-elasticsearch][chef] {{< icon "share-square" >}}                          |
+| Ansible        |          | [ansible-elasticsearch][ansible] {{< icon "share-square" >}}                        |
 
-[targz]: https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html
+[targz]: {{< relref "targz.md" >}}
 [winzip]: https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
 [deb]: https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 [rpm]: https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html

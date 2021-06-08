@@ -23,7 +23,7 @@ jobs:
           # extended: true
 
       - name: "[debug] show directory layout"
-        run: ls -l
+        run: pwd && ls -l
 
       - name: npm for hugo-geekdoc
         uses: actions/setup-node@v2

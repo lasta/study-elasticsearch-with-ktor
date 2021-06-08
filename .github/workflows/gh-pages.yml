@@ -5,7 +5,9 @@ on:
     branches:
       - master
       - main
-  pull_request:
+    paths:
+      - 'src/docs/**'
+      - '.github/workflows/gh-pages.yml'
 
 jobs:
   deploy:

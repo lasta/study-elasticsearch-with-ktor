@@ -1,6 +1,11 @@
 name: Test application
 
-on: [push]
+on:
+  push:
+    paths:
+      - '!src/docs/**'
+      - '!**.md'
+      - '.github/workflows/ktor.yml'
 
 jobs:
   build:

@@ -22,6 +22,9 @@ jobs:
           hugo-version: 'latest'
           # extended: true
 
+      - name: "[debug] show directory layout"
+        run: ls -l
+
       - name: npm for hugo-geekdoc
         uses: actions/setup-node@v2
         with:

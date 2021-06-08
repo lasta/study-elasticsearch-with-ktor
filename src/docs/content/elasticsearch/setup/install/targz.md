@@ -1,7 +1,6 @@
 ---
 title: "tar.gz (Linux, MacOS)"
 date: 2021-06-08T12:19:10+09:00
-draft: true
 ---
 
 Linux および MacOS 向けの `tar.gz` アーカイブを用いたインストール手順
@@ -116,3 +115,32 @@ Elasticsearch はデフォルトで `$ES_HOME/config/elasticsearch.yml` に記�
 通常、クラスタ全体の設定 (`cluster.name` など) は `elasticsearch.yml` で定義します。
 ノード固有の設定 (`node.name` など) はコマンドラインで指定します。
 {{< /hint >}}
+
+## ディレクトリ構成
+配布されている圧縮ファイルは、自己完結型です。
+すべてのファイルとディレクトリは、アーカイブを解凍したときに作成されるディレクトリである `$ES_HOME` に含まれています。
+
+Elasticsearch を使い始めるときは別途ディレクトリ等をつくる必要はなく、アンインストールするときは `$ES_HOME` を削除するだけで完了します。
+ただし、あとで重要なデータを誤って削除してしまわないように、 `config` ディレクトリ、 `data` ディレクトリ、 `logs` ディレクトリをデフォルト以外の場所に変更することをおすすめします。
+
+| 種別        | 説明                                                                                                                                | デフォルトの場所         | 設定名          |
+|-------------|-------------------------------------------------------------------------------------------------------------------------------------|--------------------------|-----------------|
+| **home**    | Elasticsearch のホームディレクトリ または `$ES_HOME`                                                                                | アーカイブを解凍した場所 | `$ES_HOME`      |
+| **bin**     | ノードの起動 (`elasticsearch`) や<br />プラグインのインストール (`elasticsearch-plugin`) などを<br />行うためのバイナリスクリプト群 | `$ES_HOME/bin`           |                 |
+| **conf**    | `elasticsearch.yml` を始めとした設定ファイル群                                                                                      | `$ES_HOME/config`        | `$ES_PATH_CONF` |
+| **data**    | 各 index やノードに割り当てられた shard データ群                                                                                    | `$ES_HOME/data`          | `path.data`     |
+| **logs**    | ログファイル群                                                                                                                      | `$ES_HOME/logs`          | `path.logs`     |
+| **plugins** | プラグインファイル群<br />(各プラグインはサブディレクトリ配下に配置される)                                                          | `$ES_HOME/plugins`       |                 |
+| **repo**    | 共有ファイルシステムのリポジトリの場所 (複数指定可能)<br />バックアップ / リストアなどで利用                                        | 設定なし                 | `path.repo`     |
+
+## 次のステップ
+Elasticsearch のテスト環境が整いました。
+一方で、本格的な開発や本番環境を構築する前に、いくつか追加の設定が必要になります。
+
+* [Elasticsearch の設定を学ぶ][configure Elasticsearch]
+* [重要な Elasticsearch の設定][important Elasticsearch settings]
+* [重要なシステムの設定][important system settings]
+
+[configure Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
+[important Elasticsearch settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
+[important system settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html

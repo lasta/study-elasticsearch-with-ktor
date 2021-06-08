@@ -19,5 +19,5 @@ date: 2021-05-31T19:00:37+09:00
 {{< /hint >}}
 
 ## 対応バージョン
-* Elasticsearch 7.13
+* Elasticsearch 7.13.1
 * Ktor 1.6.0

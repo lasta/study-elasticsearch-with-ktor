@@ -21,8 +21,8 @@ draft: false
 
 ```bash
 docker network create elastic
-docker pull docker.elastic.co/elasticsearch/elasticsearch:7.13.0
-docker run --name es01-test --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.13.0
+docker pull docker.elastic.co/elasticsearch/elasticsearch:7.13.1
+docker run --name es01-test --net elastic -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" docker.elastic.co/elasticsearch/elasticsearch:7.13.1
 ```
 
 [http://localhost:9200/](http://localhost:9200/) へアクセスし、 JSON が返却されれば OK です。
@@ -33,7 +33,7 @@ docker run --name es01-test --net elastic -p 9200:9200 -p 9300:9300 -e "discover
   "cluster_name": "docker-cluster",
   "cluster_uuid": "tjZJV2qWQtutpBCruoAUCA",
   "version": {
-    "number": "7.13.0",
+    "number": "7.13.1",
     "build_flavor": "default",
     "build_type": "docker",
     "build_hash": "5ca8591c6fcdb1260ce95b08a8e023559635c6f3",
@@ -52,8 +52,8 @@ docker run --name es01-test --net elastic -p 9200:9200 -p 9300:9300 -e "discover
 直感的な UI で Elasticsearch 内のデータを解析、表示、管理するには Kibana を利用します。
 
 ```bash
-docker pull docker.elastic.co/kibana/kibana:7.13.0
-docker run --name kib01-test --net elastic -p 5601:5601 -e "ELASTICSEARCH_HOSTS=http://es01-test:9200" docker.elastic.co/kibana/kibana:7.13.0
+docker pull docker.elastic.co/kibana/kibana:7.13.1
+docker run --name kib01-test --net elastic -p 5601:5601 -e "ELASTICSEARCH_HOSTS=http://es01-test:9200" docker.elastic.co/kibana/kibana:7.13.1
 ```
 
 [http://localhost:5601/](http://localhost:5601/app/home#/) へアクセスし、 Kibana の UI が表示されれば OK です。
@@ -776,8 +776,7 @@ docker rm kib01-test
   * [Kibana クイックスタートガイド][Kibana Quick start] を参照
   
 ## 次
-<!-- TODO: link -->
-[Elasticsearch のセットアップ]({{< ref "/elasticsearch/setup/setup.md" >}})
+[Elasticsearch のセットアップ]({{< relref "/elasticsearch/setup/_index.md" >}})
   
 [Use Elasticsearch for time series data]: https://www.elastic.co/guide/en/elasticsearch/reference/current/use-elasticsearch-for-time-series-data.html
 [Quick start: Get logs, metrics, and uptime data into the Elastic Stack]: https://www.elastic.co/guide/en/fleet/7.13/fleet-quick-start.html

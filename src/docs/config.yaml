@@ -13,8 +13,9 @@ pluralizeListTitles: false
 
 # Geekdoc required configuration
 pygmentsCodeFences: true
-pygmentsUseClasses: false
+pygmentsUseClasses: true
 disablePathToLower: true
+enableGitInfo: true
 
 # Needed for mermaid shortcodes
 markup:
@@ -31,6 +32,4 @@ markup:
     lineNoStart: 1
     lineNos: true
     lineNumbersInTable: true
-    style: dracula
     tabWidth: 4
-

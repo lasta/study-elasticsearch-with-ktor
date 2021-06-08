@@ -18,5 +18,6 @@ date: 2021-05-31T19:00:37+09:00
 [ktor]: https://ktor.io/
 {{< /hint >}}
 
-
-
+## 対応バージョン
+* Elasticsearch 7.13
+* Ktor 1.6.0

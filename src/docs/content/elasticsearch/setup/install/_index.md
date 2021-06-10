@@ -27,9 +27,9 @@ draft: false
 | Linux, MacOS   | `tar.gz` | [Install Elasticsearch from archive on Linux or MacOS][targz]                       |
 | Windows        | `zip`    | [Install Elasticsearch with .zip on Windows][winzip] {{< icon "share-square" >}}    |
 | Debian         | `deb`    | [Install Elasticsearch with Debian Package][deb] {{< icon "share-square" >}}        |
-| RHEL           | `rpm`    | [Install Elasticsearch with RPM][rpm] {{< icon "share-square" >}}                   |
+| RHEL           | `rpm`    | [Install Elasticsearch with RPM][rpm]                                               |
 | Windows (beta) | `msi`    | [Install Elasticsearch with Windows MSI Installer][msi] {{< icon "share-square" >}} |
-| Docker         |          | [Install Elasticsearch with Docker][docker] {{< icon "share-square" >}}             |
+| Docker         |          | [Install Elasticsearch with Docker][docker]                                         |
 | Homebrew       |          | [Install Elasticsearch on macOS with Homebrew][brew] {{< icon "share-square" >}}    |
 | Puppet         |          | [puppet-elasticsearch][puppet] {{< icon "share-square" >}}                          |
 | Chef           |          | [cookbook-elasticsearch][chef] {{< icon "share-square" >}}                          |
@@ -40,7 +40,7 @@ draft: false
 [deb]: https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
 [rpm]: {{< relref "rpm.md" >}}
 [msi]: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html
-[docker]: https://www.elastic.co/guide/en/elasticsearch/reference/7.13/docker.html
+[docker]: {{< relref "docker.md" >}}
 [brew]: https://www.elastic.co/guide/en/elasticsearch/reference/7.13/brew.html
 [puppet]: https://github.com/elastic/puppet-elasticsearch
 [chef]: https://github.com/elastic/cookbook-elasticsearch

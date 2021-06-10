@@ -16,8 +16,8 @@ RPM インストールは、 CentOS 5、SLES 11 を始めとした旧バージ�
 [targz]: {{< relref "targz.md" >}}
 {{< /hint >}}
 
-最新の安定版の Elasticsearch は [Download Elasticsearch][Download Elasticsearc] にあります。
-旧バージョンは [こちら][Past Release page] にあります。
+最新の安定版の Elasticsearch は [Download Elasticsearch][Download Elasticsearch] にあります。
+旧バージョンは [こちら][Past Releases page] にあります。
 
 [downloaded from our website]: https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html#install-rpm
 [rpm repository]: https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html#rpm-repo
@@ -222,7 +222,7 @@ curl -X GET "localhost:9200/?pretty"
 `root:elasticsearch` のパーミッションが必要です。
 
 Elasticsearch はデフォルトでは `/etc/elasticsearch/elasticsaerch.yml` ファイルから設定を読み込みます。
-この設定ファイルの書式は [Configuring Elasticsearch][Configuring Elasticsearch] を確認してください。
+この設定ファイルの書式は [Configuring Elasticsearch][Configure Elasticsearch] を確認してください。
 
 RPM 版には `/etc/sysconfig/elasticsearch` にシステムの設定ファイルがあります。
 このファイルでは、下記のパラメータを設定できます。
@@ -276,10 +276,8 @@ RPM 版には `/etc/sysconfig/elasticsearch` にシステムの設定ファイ�
 {{< /hint >}}
 
 <!-- TODO: update link to `elasticsearch-keystore tool` -->
-<!-- TODO: update link to `configuring elasticsearch` -->
 
 [elasticsearch-keystore tool]: https://www.elastic.co/guide/en/elasticsearch/reference/current/secure-settings.html
-[Configuring Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
 
 ## RPM でのディレクトリ構成
 RPM は設定ファイル、ログ、データを RPM ベースのシステムにおける適切な場所に配置します。
@@ -300,10 +298,10 @@ RPM は設定ファイル、ログ、データを RPM ベースのシステム�
 Elasticsearch のテスト環境が整いました。
 一方で、本格的な開発や本番環境を構築する前に、いくつか追加の設定が必要になります。
 
-* [Elasticsearch の設定を学ぶ][configure Elasticsearch]
+* [Elasticsearch の設定を学ぶ][Configure Elasticsearch]
 * [重要な Elasticsearch の設定][important Elasticsearch settings]
 * [重要なシステムの設定][important system settings]
 
-[configure Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
+[Configure Elasticsearch]: {{< relref "../configure/_index.md" >}}
 [important Elasticsearch settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
 [important system settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html

@@ -137,10 +137,10 @@ Elasticsearch を使い始めるときは別途ディレクトリ等をつくる
 Elasticsearch のテスト環境が整いました。
 一方で、本格的な開発や本番環境を構築する前に、いくつか追加の設定が必要になります。
 
-* [Elasticsearch の設定を学ぶ][configure Elasticsearch]
+* [Elasticsearch の設定を学ぶ][Configuring Elasticsearch]
 * [重要な Elasticsearch の設定][important Elasticsearch settings]
 * [重要なシステムの設定][important system settings]
 
-[configure Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
+[Configuring Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
 [important Elasticsearch settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
 [important system settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html

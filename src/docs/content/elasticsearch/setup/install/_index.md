@@ -1,5 +1,5 @@
 ---
-title: "Installing Elasticsearch"
+title: "Installing"
 date: 2021-06-08T11:51:32+09:00
 draft: false
 ---
@@ -38,7 +38,7 @@ draft: false
 [targz]: {{< relref "targz.md" >}}
 [winzip]: https://www.elastic.co/guide/en/elasticsearch/reference/current/zip-windows.html
 [deb]: https://www.elastic.co/guide/en/elasticsearch/reference/current/deb.html
-[rpm]: https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html
+[rpm]: {{< relref "rpm.md" >}}
 [msi]: https://www.elastic.co/guide/en/elasticsearch/reference/current/windows.html
 [docker]: https://www.elastic.co/guide/en/elasticsearch/reference/7.13/docker.html
 [brew]: https://www.elastic.co/guide/en/elasticsearch/reference/7.13/brew.html

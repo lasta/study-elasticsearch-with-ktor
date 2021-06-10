@@ -1,5 +1,5 @@
 ---
-title: "Set up Elasticsearch"
+title: "Set up"
 date: 2021-06-07T18:42:43+09:00
 draft: false
 ---

@@ -4,6 +4,8 @@ date: 2021-06-08T17:08:51+09:00
 draft: false
 ---
 
+参照元ドキュメント : [Install Elasticsearch with RPM](https://www.elastic.co/guide/en/elasticsearch/reference/current/rpm.html)
+
 RPM 版の Elasticsearch は [ウェブサイト上から直接ダウンロード][downloaded from our website] するか、 [RPM リポジトリから直接取得][rpm repository] できます。
 OpenSuSE、SLES、CentOS、Red Hat、Oracle Enterprise といった RPM ベースのシステムにインストールすることができます。
 

@@ -4,6 +4,8 @@ date: 2021-06-10T14:50:03+09:00
 draft: false
 ---
 
+参照元ドキュメント : [Install Elasticsearch with Docker](https://www.elastic.co/guide/en/elasticsearch/reference/current/docker.html)
+
 [centos:8](https://hub.docker.com/_/centos/) ベースの Docker イメージがあります。
 
 イメージは [www.docker.elastic.co](https://www.docker.elastic.co/) で配布されています。

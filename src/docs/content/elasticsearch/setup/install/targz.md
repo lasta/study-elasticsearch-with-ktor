@@ -3,6 +3,8 @@ title: "tar.gz (Linux, MacOS)"
 date: 2021-06-08T12:19:10+09:00
 ---
 
+参照元ドキュメント : [Install Elasticsearch from archive on Linux or MacOS](https://www.elastic.co/guide/en/elasticsearch/reference/current/targz.html)
+
 Linux および MacOS 向けの `tar.gz` アーカイブを用いたインストール手順
 
 最新安定版の Elasticsearch は [Download Elasticsearch](https://www.elastic.co/downloads/elasticsearch) にあります。

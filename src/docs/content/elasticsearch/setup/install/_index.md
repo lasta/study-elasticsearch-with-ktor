@@ -1,5 +1,5 @@
 ---
-title: "Installing"
+title: "インストール"
 date: 2021-06-08T11:51:32+09:00
 draft: false
 ---

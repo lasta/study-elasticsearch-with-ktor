@@ -1,7 +1,7 @@
 ---
 title: "rpm"
 date: 2021-06-08T17:08:51+09:00
-draft: true
+draft: false
 ---
 
 RPM 版の Elasticsearch は [ウェブサイト上から直接ダウンロード][downloaded from our website] するか、 [RPM リポジトリから直接取得][rpm repository] できます。

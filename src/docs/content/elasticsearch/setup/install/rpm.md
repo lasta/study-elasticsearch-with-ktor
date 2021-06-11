@@ -305,5 +305,5 @@ Elasticsearch のテスト環境が整いました。
 * [重要なシステムの設定][important system settings]
 
 [Configure Elasticsearch]: {{< relref "../configure/_index.md" >}}
-[important Elasticsearch settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
+[important Elasticsearch settings]: {{< relref "../configure/important.md" >}}
 [important system settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html

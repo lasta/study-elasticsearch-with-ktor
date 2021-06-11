@@ -111,7 +111,7 @@ Elasticsearch はデフォルトで `$ES_HOME/config/elasticsearch.yml` に記�
 ./bin/elasticsearch -d -Ecluster.name=my_cluster -Enode.name=node_1
 ```
 
-[Configuring Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
+[Configuring Elasticsearch]: {{ relref "../configure/_index.md" }}
 
 {{< hint info >}}
 通常、クラスタ全体の設定 (`cluster.name` など) は `elasticsearch.yml` で定義します。
@@ -143,6 +143,6 @@ Elasticsearch のテスト環境が整いました。
 * [重要な Elasticsearch の設定][important Elasticsearch settings]
 * [重要なシステムの設定][important system settings]
 
-[Configuring Elasticsearch]: https://www.elastic.co/guide/en/elasticsearch/reference/current/settings.html
+[Configuring Elasticsearch]: {{< relref "../configure/_index.md" >}}
 [important Elasticsearch settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/important-settings.html
 [important system settings]: https://www.elastic.co/guide/en/elasticsearch/reference/current/system-config.html

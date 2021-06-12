@@ -24,9 +24,6 @@ jobs:
           hugo-version: 'latest'
           # extended: true
 
-      - name: "[debug] show directory layout"
-        run: pwd && ls -l && ls -l src/docs/themes && ls -l src/docs/themes/hugo-geekdoc
-
       - name: Install npm
         uses: actions/setup-node@v2
         with:
@@ -46,4 +43,4 @@ jobs:
         if: github.ref == 'refs/heads/master'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./docs
+          publish_dir: src/docs/publishdir

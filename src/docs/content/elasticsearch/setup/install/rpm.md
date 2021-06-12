@@ -240,7 +240,7 @@ RPM 版には `/etc/sysconfig/elasticsearch` にシステムの設定ファイ�
 | `RESTART_ON_UPGRADE` | パッケージアップグレードの際に再起動するか (※3)                                            | `false`             |
 
 {{< hint ok >}}
-{{< icon "flag" >}} **※1** `MAX_MAP_COUNT`
+{{< icon "sticky-note" >}} **※1** `MAX_MAP_COUNT`
 
 インデックスストアタイプに `mmapfs` を使用している場合は、大きい値を設定してください。
 
@@ -249,7 +249,7 @@ RPM 版には `/etc/sysconfig/elasticsearch` にシステムの設定ファイ�
 
 
 {{< hint ok >}}
-{{< icon "flag" >}} **※2** `ES_PATH_CONF`
+{{< icon "sticky-note" >}} **※2** `ES_PATH_CONF`
 
 下記3ファイルが必ず含まれている必要があります。
 
@@ -260,7 +260,7 @@ RPM 版には `/etc/sysconfig/elasticsearch` にシステムの設定ファイ�
 {{< /hint >}}
 
 {{< hint ok >}}
-{{< icon "flag" >}} **※3** `RESTART_ON_UPGRADE`
+{{< icon "sticky-note" >}} **※3** `RESTART_ON_UPGRADE`
 
 `false` の場合、パッケージを手動でインストールしたあとに、 Elasticsearch インスタンスを再起動する必要があります。
 

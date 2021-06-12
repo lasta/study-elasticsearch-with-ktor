@@ -144,7 +144,7 @@ docker compose down -v
 {{< /hint >}}
 
 {{< hint warning >}}
-{{< icon "comment-dots" >}} **Note.**
+{{< icon "comment-dots" >}} **注意**
 
 この設定では、すべてのネットワークインタフェースで 9200 ポートが公開されてしまうことに注意してください。
 

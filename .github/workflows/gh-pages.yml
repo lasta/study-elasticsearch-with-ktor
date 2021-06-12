@@ -41,6 +41,13 @@ jobs:
       - name: Build docs
         run: hugo --minify --source src/docs
 
+      - name: "[DEBUG] list files"
+        run: >
+          echo "pwd: $(pwd)" && \
+          echo "ls -l" && \
+          echo "ls -l docs" && \
+          ls -l docs
+
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/master'

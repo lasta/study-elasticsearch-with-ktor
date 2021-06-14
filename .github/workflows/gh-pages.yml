@@ -10,21 +10,17 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
         with:
-          submodules: recursive  # Fetch Hugo themes (true OR recursive)
-          fetch-depth: 0         # Fetch all history for .GitInfo and .Lastmod
+          submodules: true  # Fetch Hugo themes
+          fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.83.1'
-          extended: true
-
-      - name: "[debug] show directory layout"
-        run: pwd && ls -l && ls -l src/docs/themes && ls -l src/docs/themes/hugo-geekdoc
 
       - name: Install npm
         uses: actions/setup-node@v2
@@ -39,9 +35,6 @@ jobs:
 
       - name: Build docs
         run: hugo --minify --source src/docs
-
-      - name: "[DEBUG] list files"
-        run: pwd && ls -l && ls -l docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

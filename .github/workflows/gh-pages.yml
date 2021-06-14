@@ -20,7 +20,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.83.1'
+          hugo-version: '0.83'
+          extended: true
 
       - name: Install npm
         uses: actions/setup-node@v2
@@ -34,7 +35,7 @@ jobs:
         run: npx gulp --cwd src/docs/themes/hugo-geekdoc
 
       - name: Build docs
-        run: hugo --minify --source src/docs
+        run: hugo --source src/docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

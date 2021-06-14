@@ -22,17 +22,6 @@ jobs:
         with:
           hugo-version: '0.83.1'
 
-      - name: Install npm
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Install dependencies of hugo-geekdoc
-        run: npm --prefix ./src/docs/themes/hugo-geekdoc install ./src/docs/themes/hugo-geekdoc
-
-      - name: Install hugo-geekdoc
-        run: gulp --cwd src/docs/themes/hugo-geekdoc
-
       - name: Build docs
         run: hugo --minify --source src/docs
 

@@ -4,6 +4,3 @@
 [submodule "docs/src/themes/hugo-geekdoc"]
 	path = docs/src/themes/hugo-geekdoc
 	url = git@github.com:thegeeklab/hugo-geekdoc.git
-[submodule "src/docs/themes/hugo-geekdoc"]
-	path = src/docs/themes/hugo-geekdoc
-	url = git@github.com:thegeeklab/hugo-geekdoc.git

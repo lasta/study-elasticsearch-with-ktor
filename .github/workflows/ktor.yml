@@ -6,6 +6,10 @@ on:
       - '!src/docs/**'
       - '!**.md'
       - '.github/workflows/ktor.yml'
+      - 'src/**'
+      - 'build.gradle.kts'
+      - 'gradle.properties'
+      - 'settings.gradle.kts'
 
 jobs:
   build:

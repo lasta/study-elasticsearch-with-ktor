@@ -2,7 +2,7 @@ baseURL: 'http://lasta.github.io/study-elasticsearch-with-ktor/'
 languageCode: ja-jp
 title: Study Elasticsearch with Ktor
 theme: hugo-geekdoc
-#publishdir: ../../docs/
+publishdir: ../../docs/
 hasCJKLanguage: true
 useHLJS: true
 
@@ -16,6 +16,9 @@ pygmentsCodeFences: true
 pygmentsUseClasses: true
 disablePathToLower: true
 enableGitInfo: true
+
+minify:
+  disableHTML: true
 
 # Needed for mermaid shortcodes
 markup:

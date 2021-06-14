@@ -3,13 +3,13 @@ name: Test application
 on:
   push:
     paths:
-      - '!src/docs/**'
-      - '!**.md'
       - '.github/workflows/ktor.yml'
       - 'src/**'
       - 'build.gradle.kts'
       - 'gradle.properties'
       - 'settings.gradle.kts'
+      - '!src/docs/**'
+      - '!**.md'
 
 jobs:
   build:

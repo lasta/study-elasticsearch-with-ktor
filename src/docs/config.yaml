@@ -2,6 +2,7 @@ baseURL: 'https://lasta.github.io/study-elasticsearch-with-ktor/'
 languageCode: ja-jp
 title: Study Elasticsearch with Ktor
 theme: hugo-geekdoc
+publishdir: ../../docs/
 hasCJKLanguage: true
 useHLJS: true
 

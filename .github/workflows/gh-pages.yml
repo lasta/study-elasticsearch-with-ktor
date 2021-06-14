@@ -31,7 +31,7 @@ jobs:
         run: npm --prefix ./src/docs/themes/hugo-geekdoc install ./src/docs/themes/hugo-geekdoc
 
       - name: Install hugo-geekdoc
-        run: gulp --cwd src/docs/themes/hugo-geekdoc
+        run: npx gulp --cwd src/docs/themes/hugo-geekdoc
 
       - name: Build docs
         run: hugo --minify --source src/docs

@@ -9,7 +9,7 @@
 [ktor]: https://ktor.io/
 
 ## Document
-https://lasta.github.io/study-elasticsearch-with-ktor/
+:construction: ~~https://lasta.github.io/study-elasticsearch-with-ktor/~~ (under construction)
 
 ### Build document
 see [src/docs/README.md](src/docs/README.md)

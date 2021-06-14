@@ -74,3 +74,4 @@ class AuthenticationException : RuntimeException()
 class AuthorizationException : RuntimeException()
 
 private fun Route.list(root: Route): List<Route> = listOf(root) + root.children.flatMap { this.list(it) }
+

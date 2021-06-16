@@ -10,7 +10,7 @@
 
 
 
-    <meta name="description" content="wip">
+    <meta name="description" content="Index modules は index ごとに作成されるモジュールです。 index のあらゆる面を制御します。 Index の設定 Index level settings は index ごとに設定されます。 static Index の作成時または closed index に指定可能な">
 
 
 
@@ -938,7 +938,192 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
 
     <article class="gdoc-markdown gdoc-markdown__align--left">
         <h1>Index modules</h1>
-        <p>wip</p>
+        <p>Index modules は index ごとに作成されるモジュールです。
+index のあらゆる面を制御します。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="index-の設定">
+        Index の設定
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#index-の設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor Index の設定" href="#index-%e3%81%ae%e8%a8%ad%e5%ae%9a">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><p>Index level settings は index ごとに設定されます。</p>
+<ul>
+<li>static
+<ul>
+<li>Index の作成時または <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules.html">closed index</a> に指定可能な静的な設定です。</li>
+</ul>
+</li>
+<li>dynamic
+<ul>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-update-settings.html">update-index-settings</a> を用いて動的に変更可能な設定です。</li>
+</ul>
+</li>
+</ul>
+<blockquote class="gdoc-hint warning">
+  <p><svg class="icon comment-dots"><use xlink:href="#comment-dots"></use></svg> <strong>注意</strong></p>
+<p>closed index の設定を変更すると、 index の削除および再作成が必要になる場合があります。</p>
+
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h2 id="静的な設定の項目---static-index-settings">
+        静的な設定の項目 - Static index settings
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#静的な設定の項目---static-index-settings" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 静的な設定の項目 - Static index settings" href="#%e9%9d%99%e7%9a%84%e3%81%aa%e8%a8%ad%e5%ae%9a%e3%81%ae%e9%a0%85%e7%9b%ae---static-index-settings">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><div class="gdoc-page__anchorwrap">
+    <h3 id="indexnumber_of_shards">
+        <code>index.number_of_shards</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexnumber_of_shards" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.number_of_shards" href="#indexnumber_of_shards">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>index が持つべき primary shard の数を設定します。
+デフォルト値は1で、 index の作成時のみ設定可能です。
+closed index では変更不可能です。</p>
+<blockquote class="gdoc-hint info">
+  <p><svg class="icon lightbulb"><use xlink:href="#lightbulb"></use></svg> <strong>Note</strong></p>
+<p>1 index あたりの shard の数はデフォルトで 1024 個までに制限されています。
+リソースの割当によってクラスタを不安定にする可能性のある index が誤って作成されるのを防ぐための安全上の制限です。</p>
+<p>すべてのノードで <code>export ES_JAVA_OPTS=&quot;-Des.index.max_number_of_shards=128&quot;</code> などのように指定することで変更可能です。</p>
+
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexnumber_of_routing_shards">
+        <code>index.number_of_routing_shards</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexnumber_of_routing_shards" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.number_of_routing_shards" href="#indexnumber_of_routing_shards">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>Index の <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-split-index.html">分割</a> の際に用いられる、 routing shard の数を設定します。</p>
+<p>5 shards で <code>number_of_routing_shards</code> が 30 の場合、2倍または3倍に分割される可能性があります。</p>
+<ul>
+<li>5 → 10 → 30 (2つに分けて、さらに3つに分ける)</li>
+<li>5 → 15 → 30 (3つに分けて、さらに2つに分ける)</li>
+<li>5 → 60 (6つに分ける)</li>
+</ul>
+<p>この設定のデフォルト値は、 index の primary shards の数に依存します。
+デフォルトでは最大 1024 個の shard まで 2 の係数で分割できるように設計されています。</p>
+<blockquote class="gdoc-hint info">
+  <p><svg class="icon lightbulb"><use xlink:href="#lightbulb"></use></svg> <strong>Note</strong></p>
+<p>Elasticsearch 7.0.0 以降では、この設定は shard 間でのドキュメントの分割方法に影響します。
+カスタムルーティングを仕様した古い index を再 index する際、同じドキュメント配分を維持するためには、 <code>index.number_of_routing_shards</code> を
+明示的に設定する必要があります。</p>
+<p>詳細は <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/7.0/breaking-changes-7.0.html#_document_distribution_changes">related breaking change</a> を確認してください。</p>
+
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexshardcheck_on_startup">
+        <code>index.shard.check_on_startup</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexshardcheck_on_startup" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.shard.check_on_startup" href="#indexshardcheck_on_startup">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>起動時に shard の破損をチェックするかどうか指定します。
+破損が検出された場合、 shard を参照することができなくなります。</p>
+<ul>
+<li><code>false</code>
+<ul>
+<li>デフォルト値</li>
+<li>shard を参照する際に破損しているかどうかチェックしない</li>
+</ul>
+</li>
+<li><code>checksum</code>
+<ul>
+<li>物理的に破損しているかどうかチェックする</li>
+</ul>
+</li>
+<li><code>true</code>
+<ul>
+<li>破損しているかどうか物理的にも論理的にもチェックする</li>
+<li>非常に CPU とメモリを食う</li>
+</ul>
+</li>
+</ul>
+<blockquote class="gdoc-hint warning">
+  <p><svg class="icon comment-dots"><use xlink:href="#comment-dots"></use></svg> <strong>注意</strong></p>
+<p>熟練者向けの設定です。</p>
+<p>index のサイズが大きい場合、 shard の破損の確認は時間がかかります。</p>
+
+</blockquote>
+
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexcodec">
+        <code>index.codec</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexcodec" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.codec" href="#indexcodec">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>デフォルトでは、保存されたデータは LZ4 で圧縮されます。
+<code>best_compression</code> を指定することで、 DEFLATE を利用してより圧縮率になりますが、フィールド参照時のパフォーマンスが劣化します。</p>
+<p>圧縮の種類を変更した場合、セグメントが結合されたあとに新しい圧縮方式が適用されます。
+セグメントの結合は <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/indices-forcemerge.html">force merge</a> で強制的に行う事ができます。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexrouting_partition_size">
+        <code>index.routing_partition_size</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexrouting_partition_size" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.routing_partition_size" href="#indexrouting_partition_size">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>カスタム <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-routing-field.html">ルーティング</a> 時に値を送信できる shard の数を指定します。
+デフォルト値は1です。 index 作成時のみ設定できます。</p>
+<p>この値は <code>index.number_of_shards</code> の値が 1 でない限り、 <code>index.number_of_shards</code> の値より小さくなければなりません。
+詳細は <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/mapping-routing-field.html#routing-index-partition">Routing to an index partition</a> を参照してください。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexsoft_deletesenabled">
+        <code>index.soft_deletes.enabled</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexsoft_deletesenabled" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.soft_deletes.enabled" href="#indexsoft_deletesenabled">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><blockquote class="gdoc-hint warning">
+  <p><svg class="icon comment-dots"><use xlink:href="#comment-dots"></use></svg> <strong>注意</strong></p>
+<p>Elasticsearch 7.6.0 で Deprecated になりました。
+soft-deletes を無効にした index の作成が非推奨になりました。</p>
+<p>将来的にはこの設定項目が削除される予定です。</p>
+
+</blockquote>
+
+<p>index で soft-deletes を有効にするかどうか指定します。
+soft-deletes は index 作成時のみ指定可能です。
+Elasticsearch 6.5.0 以降で作成された index のみ設定できます。
+デフォルト値は <code>true</code> です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexsoft_deletesretention_leaseperiod">
+        <code>index.soft_deletes.retention_lease.period</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexsoft_deletesretention_leaseperiod" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.soft_deletes.retention_lease.period" href="#indexsoft_deletesretention_leaseperiod">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>shard history retention lease が期限切れとみなされるまでの最大保持期間を指定します。
+shard history retention lease は、 lucene index のマージ時に soft-deletes されないよう保持します。
+soft-deletes がレプリケーションされる前にマージされてしまうと、履歴が不完全な状態になるため、後続の処理が失敗します。</p>
+<p>デフォルト値は <code>12h</code> (12 時間) です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexload_fixed_bitset_filters_eagerly">
+        <code>index.load_fixed_bitset_filters_eagerly</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexload_fixed_bitset_filters_eagerly" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.load_fixed_bitset_filters_eagerly" href="#indexload_fixed_bitset_filters_eagerly">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>ネストされたクエリに対し、 <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-filter-context.html">cached filters</a> を遅延読み込みするかどうか指定します。
+デフォルト値は <code>true</code> で遅延読み込みしません。 (eager load)
+<code>false</code> で遅延読み込み (lazy load) します。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexhidden">
+        <code>index.hidden</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexhidden" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.hidden" href="#indexhidden">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>index をデフォルトで非表示にするかどうか指定します。
+ワイルドカードで index を指定した場合、デフォルトでは非表示の index は返却されません。
+リクエストごとに <code>expand_wildcards</code> パラメータにて正義よされます。</p>
+<p>指定できる値は <code>true</code> か <code>false</code> で、デフォルトでは <code>false</code> です。</p>
 
 
     </article>

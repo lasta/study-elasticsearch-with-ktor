@@ -5,6 +5,7 @@ theme: hugo-geekdoc
 publishdir: ../../docs/
 hasCJKLanguage: true
 useHLJS: true
+refLinksErrorLevel: WARNING
 
 ############################################################
 # https://geekdocs.de/usage/getting-started/

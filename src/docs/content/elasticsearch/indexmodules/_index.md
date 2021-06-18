@@ -24,7 +24,7 @@ Index level settings は index ごとに設定されます。
 closed index の設定を変更すると、 index の削除および再作成が必要になる場合があります。
 {{< /hint >}}
 
-## 静的な設定の項目 - Static index settings
+## 静的な設定項目 - Static index settings
 ### `index.number_of_shards`
 index が持つべき primary shard の数を設定します。
 デフォルト値は1で、 index の作成時のみ設定可能です。
@@ -138,3 +138,210 @@ index をデフォルトで非表示にするかどうか指定します。
 リクエストごとに `expand_wildcards` パラメータにて正義よされます。
 
 指定できる値は `true` か `false` で、デフォルトでは `false` です。
+
+## 動的な設定項目 - Dynamic index settings
+### `index.number_of_replicas`
+各 primary shard のレプリカ数を指定します。
+デフォルト値は1です。
+
+### `index.auto_expand_replicas`
+クラスタのデータノード数に応じて、レプリカ数を自動的に拡張するかどうかを指定します。
+
+* `false` (既定値)
+    * 無効
+* ダッシュ区切りで指定 (例: `0-5`)
+    * 下限と上限を設定
+* `0-all`
+    * すべてを使用
+    
+自動拡張されたレプリカ数は [allocation filtering][allocation filtering] ルールのみ考慮され、
+[ノードごとの合計シャード数][total shards per node] を始めとした他の割当規則が無視されることに注意してください。
+適用可能なルールによってすべてのレプリカが割り当てられない場合、クラスタの滋養帯が `YELLOW` になる可能性があります。
+
+上限が `all` の場合、 [shard allocation awareness][shard allocation awareness] および
+[`cluster.routing.allocation.same_shard.host`][cluster.routing.allocation.same_shard.host] は無視されます。
+
+[allocation filtering]: https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html
+[total shards per node]: https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html
+[shard allocation awareness]: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#shard-allocation-awareness
+[cluster.routing.allocation.same_shard.host]: https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-same-shard-host
+
+### `index.search.idle.after`
+shard idle 状態 (検索や get リクエストが来ていない) とみなすまでの時間を指定します。
+デフォルト値は 30秒 (`30s`) です。
+
+### `index.refresh_interval`
+index に対する直近の変更を検索に反映させるまでのリフレッシュを行う頻度を指定します。
+デフォルト値は 1秒 (`1s`) です。
+`-1` を指定すると、リフレッシュが無効になります。
+
+この設定が明示的に指定されていない場合、少なくとも `index.search.idle.after` で指定した時間検索トラフィックが来ていない shard は、
+検索リクエストが来るまでバックグラウンドでリフレッシュしません。
+リフレッシュされていない idle 状態の shard にヒットした場合、次のバックグラウンドでのリフレッシュを待ちます。 (1秒以内)
+この動作は、検索が行われない bulk indexing の動作を自動的に最適化することを目的としています。
+これを無効にするには、明示的に `1s` を指定する必要があります。
+
+### `index.max_result_window`
+検索時の `from + size` の最大値を指定します。
+デフォルト値は 10000 です。
+
+`from + size` に大きな値を指定するとメモリと時間を消費する (ディープページング問題) ための対策です。
+
+この値を上げない効率的な方法については、 [Scroll][Scroll] と [Search After][Search After] を参照してください。
+
+[Scroll]: https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results
+[Search After]: https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#search-after 
+
+### `index.max_inner_result_window` 
+inner hits や top hits aggregations の際の `from + size` の上限値を指定します。
+デフォルト値は 100 です。
+
+inner hits や top hits aggregations は `from + size` に比例してメモリと時間を消費します。
+
+### `index.max_rescore_window`
+`rescore` の `window_size` の最大値を指定します。
+デフォルト値は `index.max_result_window` です。
+
+`max(window_size, from + size)` に比例してしてメモリと時間を消費します。
+
+### `index.max_docvalue_fields_search`
+クエリで許容される `docvalue_fields` の最大値を指定します。
+デフォルト値は 100 です。
+
+Doc-value フィールドは、各ドキュメントの各フィールドごとに seek が発生する場合があります。
+
+### `index.max_script_fields`
+1クエリでの `script_fields` の個数の上限値を指定します。
+デフォルト値は 32 です。
+
+### `index.max_ngram_diff`
+`NGramTokenizer` や `NGramTokenFilter` における `min_gram` と `max_gram` 間の最大の差を指定します。
+デフォルト値は1です。
+
+### `index.max_shingle_diff`
+[`shingle` token filter][shingle token filter] における `max_shingle_size` と `min_shingle_size` 間の最大の差を指定します。
+デフォルト値は 3 です。
+
+[shingle token filter]: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-shingle-tokenfilter.html
+
+### `index_max_refresh_listeners`
+index の各 shard で利用可能な refresh listener の最大数を指定します。
+この listener は [`refresh=wait_for`][refresh parameter] で使用されます。
+
+[refresh parameter]: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html
+
+### `index.analyze.max_token_count`
+生成される token 数の最大値を指定します。 `analyze` API で使用されます。
+デフォルト値は 10000 です。
+
+### `index.highlight.max_analyzed_offset`
+highlight リクエストにて解析される文字の最大数を指定します。
+この設定は、 offset または term vector なしで index されたテキストに対し highlight が要求された場合のみ適用されます。
+デフォルト値は `1000000` です。
+
+### `index.max_terms_count`
+Terms Query における terms 数の最大値を指定します。
+デフォルト値は 65536 です。
+
+### `index.max_regex_length`
+Regexp Query における正規表現の長さの上限を指定子ます。
+デフォルト値は 1000 です。
+
+### `index.query.default_field`
+デフォルトの検索対象のフィールドを指定します。
+文字列または文字列の配列を指定できます。
+
+このフィールドは下記クエリで利用されます。
+
+* [More like this]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
+* [Multi-match]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html
+* [Query string]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html
+* [Simple query string]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html
+
+デフォルト値は `*` です。
+メタデータフィールドを除く、 term-level クエリの対象となるすべてのフィールドを対象とします。
+
+### `index.routing.allocation.enable`
+shard の割当を制御します。
+
+* `all` (デフォルト値)
+    * すべての shard に対して shard allocation を許可する
+* `primaries`
+    * primary shard のみ shard allocation を許可する
+* `new_primaries`
+    * 新たに作成された primary shard のみ shard allocation を許可する
+* `none`
+    * shard allocation をしない
+    
+
+### `index.routing.rebalance.enable`
+shard の再バランシング (shard rebalancing) を有効化します。
+
+* `all` (デフォルト値)
+    * すべての shard
+* `primaries`
+    * primary shard のみ
+* `replicas`
+    * replica shard のみ
+* `none`
+    * 許可しない
+    
+### `index.gc_deletes`
+[削除された document のバージョン番号][deleted document’s version number] が
+[その後のバージョン操作][further versioned operations] によって再利用可能になるまでの時間を指定します。
+
+デフォルト値は 60秒 (`60s`) です。
+
+[deleted document’s version number]: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html#delete-versioning
+[further versioned operations]: https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-versioning
+
+### `index.default_pipeline`
+デフォルトの [ingest node][ingest node] パイプラインを指定します。
+デフォルトのパイプラインが設定されていて、かつそのパイプラインが存在しない場合、 index へのリクエストは失敗します。
+
+`pipeline` パラメータを使用して上書きできます。
+
+特殊なパイプライン名 `_none` は、 ingest pipeline を実行しないことを示します。
+
+[ingest node]: https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html
+
+### `inex.final_pipeline`
+index の final [ingest node] パイプラインを指定します。
+final pipeline が指定され、かつその pipeline が存在しない場合、 index へのリクエストは失敗します。
+
+final pipeline は、 request pipeline (指定されている場合) と default pipelin (存在する場合) のあとに常に実行されます。
+
+特殊な pipeline 名 `_none` は、 ingest pipeline が実行されないことを示します。
+
+## 他の index modules の設定
+* [Analysis][Analysis]
+    * 解析器 (analizers)、形態素解析器 (tokenizers)、トークンフィルタ (token filters)、キャラクタフィルタ (character filters) の設定
+* [Index shard allocation][Index shard allocation]
+    * node に対し、いつどこにどうやって shard が配置されるかどうかの設定
+* [Mapping][Mapping]
+    * 動的 mapping の有効 / 無効の設定
+* [Merging][Merging]
+    * バックグラウンド実行される merge process によって shard がどうマージされるかどうかの設定
+* [Similarities][Similarities]
+    * 検索結果のスコアリングのカスタマイズのための、類似度をカスタマイズするための設定
+* [Slowlog][Slowlog]
+    * query と fetch の slow-log の設定
+* [Store][Store]
+    * shard データへアクセスする際のファイルシステムの種類の設定
+* [Translog][Translog]
+    * トランザクションログとバックグラウンド実行される flush 処理の設定
+* [History retention][History retention]
+    * index の操作履歴の設定
+* [Indexing pressure][Indexing pressure]
+    * index データの圧縮に関する設定
+
+[Analysis]: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
+[Index shard allocation]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-allocation.html
+[Mapping]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-mapper.html
+[Merging]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html
+[Similarities]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html
+[Slowlog]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html
+[Store]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-store.html
+[Translog]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-translog.html
+[History retention]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-history-retention.html
+[Indexing pressure]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html

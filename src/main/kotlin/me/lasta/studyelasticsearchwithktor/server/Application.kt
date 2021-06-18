@@ -1,4 +1,4 @@
-package me.lasta
+package me.lasta.studyelasticsearchwithktor.server
 
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.server.engine.*

@@ -314,8 +314,8 @@ final pipeline は、 request pipeline (指定されている場合) と default
 特殊な pipeline 名 `_none` は、 ingest pipeline が実行されないことを示します。
 
 ## 他の index modules の設定
-* [Analysis][Analysis]
-    * 解析器 (analizers)、形態素解析器 (tokenizers)、トークンフィルタ (token filters)、キャラクタフィルタ (character filters) の設定
+* [Analysis][text analysis]
+    * 解析器 (analyzers)、形態素解析器 (tokenizers)、トークンフィルタ (token filters)、キャラクタフィルタ (character filters) の設定
 * [Index shard allocation][Index shard allocation]
     * node に対し、いつどこにどうやって shard が配置されるかどうかの設定
 * [Mapping][Mapping]
@@ -335,7 +335,7 @@ final pipeline は、 request pipeline (指定されている場合) と default
 * [Indexing pressure][Indexing pressure]
     * index データの圧縮に関する設定
 
-[Analysis]: https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
+[text analysis]: {{< relref "/elasticsearch/textanalysis/_index.md" >}}
 [Index shard allocation]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-allocation.html
 [Mapping]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-mapper.html
 [Merging]: https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html

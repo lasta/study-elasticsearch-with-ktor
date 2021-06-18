@@ -967,9 +967,9 @@ index のあらゆる面を制御します。</p>
 </blockquote>
 
 <div class="gdoc-page__anchorwrap">
-    <h2 id="静的な設定の項目---static-index-settings">
-        静的な設定の項目 - Static index settings
-        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#静的な設定の項目---static-index-settings" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 静的な設定の項目 - Static index settings" href="#%e9%9d%99%e7%9a%84%e3%81%aa%e8%a8%ad%e5%ae%9a%e3%81%ae%e9%a0%85%e7%9b%ae---static-index-settings">
+    <h2 id="静的な設定項目---static-index-settings">
+        静的な設定項目 - Static index settings
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#静的な設定項目---static-index-settings" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 静的な設定項目 - Static index settings" href="#%e9%9d%99%e7%9a%84%e3%81%aa%e8%a8%ad%e5%ae%9a%e9%a0%85%e7%9b%ae---static-index-settings">
             <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
         </a>
     </h2>
@@ -1124,6 +1124,359 @@ soft-deletes がレプリケーションされる前にマージされてしま�
 ワイルドカードで index を指定した場合、デフォルトでは非表示の index は返却されません。
 リクエストごとに <code>expand_wildcards</code> パラメータにて正義よされます。</p>
 <p>指定できる値は <code>true</code> か <code>false</code> で、デフォルトでは <code>false</code> です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="動的な設定項目---dynamic-index-settings">
+        動的な設定項目 - Dynamic index settings
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#動的な設定項目---dynamic-index-settings" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 動的な設定項目 - Dynamic index settings" href="#%e5%8b%95%e7%9a%84%e3%81%aa%e8%a8%ad%e5%ae%9a%e9%a0%85%e7%9b%ae---dynamic-index-settings">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><div class="gdoc-page__anchorwrap">
+    <h3 id="indexnumber_of_replicas">
+        <code>index.number_of_replicas</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexnumber_of_replicas" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.number_of_replicas" href="#indexnumber_of_replicas">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>各 primary shard のレプリカ数を指定します。
+デフォルト値は1です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexauto_expand_replicas">
+        <code>index.auto_expand_replicas</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexauto_expand_replicas" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.auto_expand_replicas" href="#indexauto_expand_replicas">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>クラスタのデータノード数に応じて、レプリカ数を自動的に拡張するかどうかを指定します。</p>
+<ul>
+<li><code>false</code> (既定値)
+<ul>
+<li>無効</li>
+</ul>
+</li>
+<li>ダッシュ区切りで指定 (例: <code>0-5</code>)
+<ul>
+<li>下限と上限を設定</li>
+</ul>
+</li>
+<li><code>0-all</code>
+<ul>
+<li>すべてを使用</li>
+</ul>
+</li>
+</ul>
+<p>自動拡張されたレプリカ数は <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/shard-allocation-filtering.html">allocation filtering</a> ルールのみ考慮され、
+<a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/allocation-total-shards.html">ノードごとの合計シャード数</a> を始めとした他の割当規則が無視されることに注意してください。
+適用可能なルールによってすべてのレプリカが割り当てられない場合、クラスタの滋養帯が <code>YELLOW</code> になる可能性があります。</p>
+<p>上限が <code>all</code> の場合、 <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#shard-allocation-awareness">shard allocation awareness</a> および
+<a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/modules-cluster.html#cluster-routing-allocation-same-shard-host"><code>cluster.routing.allocation.same_shard.host</code></a> は無視されます。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexsearchidleafter">
+        <code>index.search.idle.after</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexsearchidleafter" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.search.idle.after" href="#indexsearchidleafter">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>shard idle 状態 (検索や get リクエストが来ていない) とみなすまでの時間を指定します。
+デフォルト値は 30秒 (<code>30s</code>) です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexrefresh_interval">
+        <code>index.refresh_interval</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexrefresh_interval" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.refresh_interval" href="#indexrefresh_interval">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>index に対する直近の変更を検索に反映させるまでのリフレッシュを行う頻度を指定します。
+デフォルト値は 1秒 (<code>1s</code>) です。
+<code>-1</code> を指定すると、リフレッシュが無効になります。</p>
+<p>この設定が明示的に指定されていない場合、少なくとも <code>index.search.idle.after</code> で指定した時間検索トラフィックが来ていない shard は、
+検索リクエストが来るまでバックグラウンドでリフレッシュしません。
+リフレッシュされていない idle 状態の shard にヒットした場合、次のバックグラウンドでのリフレッシュを待ちます。 (1秒以内)
+この動作は、検索が行われない bulk indexing の動作を自動的に最適化することを目的としています。
+これを無効にするには、明示的に <code>1s</code> を指定する必要があります。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_result_window">
+        <code>index.max_result_window</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_result_window" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_result_window" href="#indexmax_result_window">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>検索時の <code>from + size</code> の最大値を指定します。
+デフォルト値は 10000 です。</p>
+<p><code>from + size</code> に大きな値を指定するとメモリと時間を消費する (ディープページング問題) ための対策です。</p>
+<p>この値を上げない効率的な方法については、 <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#scroll-search-results">Scroll</a> と <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/paginate-search-results.html#search-after">Search After</a> を参照してください。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_inner_result_window">
+        <code>index.max_inner_result_window</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_inner_result_window" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_inner_result_window" href="#indexmax_inner_result_window">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>inner hits や top hits aggregations の際の <code>from + size</code> の上限値を指定します。
+デフォルト値は 100 です。</p>
+<p>inner hits や top hits aggregations は <code>from + size</code> に比例してメモリと時間を消費します。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_rescore_window">
+        <code>index.max_rescore_window</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_rescore_window" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_rescore_window" href="#indexmax_rescore_window">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p><code>rescore</code> の <code>window_size</code> の最大値を指定します。
+デフォルト値は <code>index.max_result_window</code> です。</p>
+<p><code>max(window_size, from + size)</code> に比例してしてメモリと時間を消費します。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_docvalue_fields_search">
+        <code>index.max_docvalue_fields_search</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_docvalue_fields_search" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_docvalue_fields_search" href="#indexmax_docvalue_fields_search">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>クエリで許容される <code>docvalue_fields</code> の最大値を指定します。
+デフォルト値は 100 です。</p>
+<p>Doc-value フィールドは、各ドキュメントの各フィールドごとに seek が発生する場合があります。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_script_fields">
+        <code>index.max_script_fields</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_script_fields" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_script_fields" href="#indexmax_script_fields">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>1クエリでの <code>script_fields</code> の個数の上限値を指定します。
+デフォルト値は 32 です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_ngram_diff">
+        <code>index.max_ngram_diff</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_ngram_diff" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_ngram_diff" href="#indexmax_ngram_diff">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p><code>NGramTokenizer</code> や <code>NGramTokenFilter</code> における <code>min_gram</code> と <code>max_gram</code> 間の最大の差を指定します。
+デフォルト値は1です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_shingle_diff">
+        <code>index.max_shingle_diff</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_shingle_diff" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_shingle_diff" href="#indexmax_shingle_diff">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-shingle-tokenfilter.html"><code>shingle</code> token filter</a> における <code>max_shingle_size</code> と <code>min_shingle_size</code> 間の最大の差を指定します。
+デフォルト値は 3 です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="index_max_refresh_listeners">
+        <code>index_max_refresh_listeners</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#index_max_refresh_listeners" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index_max_refresh_listeners" href="#index_max_refresh_listeners">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>index の各 shard で利用可能な refresh listener の最大数を指定します。
+この listener は <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-refresh.html"><code>refresh=wait_for</code></a> で使用されます。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexanalyzemax_token_count">
+        <code>index.analyze.max_token_count</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexanalyzemax_token_count" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.analyze.max_token_count" href="#indexanalyzemax_token_count">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>生成される token 数の最大値を指定します。 <code>analyze</code> API で使用されます。
+デフォルト値は 10000 です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexhighlightmax_analyzed_offset">
+        <code>index.highlight.max_analyzed_offset</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexhighlightmax_analyzed_offset" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.highlight.max_analyzed_offset" href="#indexhighlightmax_analyzed_offset">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>highlight リクエストにて解析される文字の最大数を指定します。
+この設定は、 offset または term vector なしで index されたテキストに対し highlight が要求された場合のみ適用されます。
+デフォルト値は <code>1000000</code> です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_terms_count">
+        <code>index.max_terms_count</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_terms_count" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_terms_count" href="#indexmax_terms_count">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>Terms Query における terms 数の最大値を指定します。
+デフォルト値は 65536 です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexmax_regex_length">
+        <code>index.max_regex_length</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexmax_regex_length" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.max_regex_length" href="#indexmax_regex_length">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>Regexp Query における正規表現の長さの上限を指定子ます。
+デフォルト値は 1000 です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexquerydefault_field">
+        <code>index.query.default_field</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexquerydefault_field" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.query.default_field" href="#indexquerydefault_field">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>デフォルトの検索対象のフィールドを指定します。
+文字列または文字列の配列を指定できます。</p>
+<p>このフィールドは下記クエリで利用されます。</p>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<p>デフォルト値は <code>*</code> です。
+メタデータフィールドを除く、 term-level クエリの対象となるすべてのフィールドを対象とします。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexroutingallocationenable">
+        <code>index.routing.allocation.enable</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexroutingallocationenable" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.routing.allocation.enable" href="#indexroutingallocationenable">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>shard の割当を制御します。</p>
+<ul>
+<li><code>all</code> (デフォルト値)
+<ul>
+<li>すべての shard に対して shard allocation を許可する</li>
+</ul>
+</li>
+<li><code>primaries</code>
+<ul>
+<li>primary shard のみ shard allocation を許可する</li>
+</ul>
+</li>
+<li><code>new_primaries</code>
+<ul>
+<li>新たに作成された primary shard のみ shard allocation を許可する</li>
+</ul>
+</li>
+<li><code>none</code>
+<ul>
+<li>shard allocation をしない</li>
+</ul>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexroutingrebalanceenable">
+        <code>index.routing.rebalance.enable</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexroutingrebalanceenable" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.routing.rebalance.enable" href="#indexroutingrebalanceenable">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>shard の再バランシング (shard rebalancing) を有効化します。</p>
+<ul>
+<li><code>all</code> (デフォルト値)
+<ul>
+<li>すべての shard</li>
+</ul>
+</li>
+<li><code>primaries</code>
+<ul>
+<li>primary shard のみ</li>
+</ul>
+</li>
+<li><code>replicas</code>
+<ul>
+<li>replica shard のみ</li>
+</ul>
+</li>
+<li><code>none</code>
+<ul>
+<li>許可しない</li>
+</ul>
+</li>
+</ul>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexgc_deletes">
+        <code>index.gc_deletes</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexgc_deletes" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.gc_deletes" href="#indexgc_deletes">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-delete.html#delete-versioning">削除された document のバージョン番号</a> が
+<a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-index_.html#index-versioning">その後のバージョン操作</a> によって再利用可能になるまでの時間を指定します。</p>
+<p>デフォルト値は 60秒 (<code>60s</code>) です。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="indexdefault_pipeline">
+        <code>index.default_pipeline</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#indexdefault_pipeline" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor index.default_pipeline" href="#indexdefault_pipeline">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>デフォルトの <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html">ingest node</a> パイプラインを指定します。
+デフォルトのパイプラインが設定されていて、かつそのパイプラインが存在しない場合、 index へのリクエストは失敗します。</p>
+<p><code>pipeline</code> パラメータを使用して上書きできます。</p>
+<p>特殊なパイプライン名 <code>_none</code> は、 ingest pipeline を実行しないことを示します。</p>
+<div class="gdoc-page__anchorwrap">
+    <h3 id="inexfinal_pipeline">
+        <code>inex.final_pipeline</code>
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#inexfinal_pipeline" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor inex.final_pipeline" href="#inexfinal_pipeline">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h3>
+</div><p>index の final <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/ingest.html">ingest node</a> パイプラインを指定します。
+final pipeline が指定され、かつその pipeline が存在しない場合、 index へのリクエストは失敗します。</p>
+<p>final pipeline は、 request pipeline (指定されている場合) と default pipelin (存在する場合) のあとに常に実行されます。</p>
+<p>特殊な pipeline 名 <code>_none</code> は、 ingest pipeline が実行されないことを示します。</p>
+<div class="gdoc-page__anchorwrap">
+    <h2 id="他の-index-modules-の設定">
+        他の index modules の設定
+        <a data-clipboard-text="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/#他の-index-modules-の設定" class="gdoc-page__anchor gdoc-page__anchor--right clip" aria-label="Anchor 他の index modules の設定" href="#%e4%bb%96%e3%81%ae-index-modules-%e3%81%ae%e8%a8%ad%e5%ae%9a">
+            <svg class="icon gdoc_link"><use xlink:href="#gdoc_link"></use></svg>
+        </a>
+    </h2>
+</div><ul>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html">Analysis</a>
+<ul>
+<li>解析器 (analizers)、形態素解析器 (tokenizers)、トークンフィルタ (token filters)、キャラクタフィルタ (character filters) の設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-allocation.html">Index shard allocation</a>
+<ul>
+<li>node に対し、いつどこにどうやって shard が配置されるかどうかの設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-mapper.html">Mapping</a>
+<ul>
+<li>動的 mapping の有効 / 無効の設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html">Merging</a>
+<ul>
+<li>バックグラウンド実行される merge process によって shard がどうマージされるかどうかの設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-merge.html">Similarities</a>
+<ul>
+<li>検索結果のスコアリングのカスタマイズのための、類似度をカスタマイズするための設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-slowlog.html">Slowlog</a>
+<ul>
+<li>query と fetch の slow-log の設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-store.html">Store</a>
+<ul>
+<li>shard データへアクセスする際のファイルシステムの種類の設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-translog.html">Translog</a>
+<ul>
+<li>トランザクションログとバックグラウンド実行される flush 処理の設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-history-retention.html">History retention</a>
+<ul>
+<li>index の操作履歴の設定</li>
+</ul>
+</li>
+<li><a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/index-modules-indexing-pressure.html">Indexing pressure</a>
+<ul>
+<li>index データの圧縮に関する設定</li>
+</ul>
+</li>
+</ul>
 
 
     </article>

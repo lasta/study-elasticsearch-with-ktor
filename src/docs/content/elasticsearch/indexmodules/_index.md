@@ -253,10 +253,10 @@ Regexp Query における正規表現の長さの上限を指定子ます。
 
 このフィールドは下記クエリで利用されます。
 
-* [More like this]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html
-* [Multi-match]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html
-* [Query string]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html
-* [Simple query string]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html
+* [More like this](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-mlt-query.html)
+* [Multi-match](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-multi-match-query.html)
+* [Query string](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html)
+* [Simple query string](https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-simple-query-string-query.html)
 
 デフォルト値は `*` です。
 メタデータフィールドを除く、 term-level クエリの対象となるすべてのフィールドを対象とします。

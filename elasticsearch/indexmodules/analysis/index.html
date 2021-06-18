@@ -10,11 +10,11 @@
 
 
 
-    <meta name="description" content="Study Elasticsearch with Ktor">
+    <meta name="description" content="Index analysis module は文字列フィールドを term に分割するための解析器の構成を登録するためのレジストリとして機能します。 document を検索可能にするための転置インデックス">
 
 
 
-    <title>Elasticsearch | Study Elasticsearch with Ktor</title>
+    <title>Analysis | Study Elasticsearch with Ktor</title>
 
     <link rel="icon" href="/study-elasticsearch-with-ktor/favicon/favicon-32x32.png" type="image/x-icon">
 
@@ -35,7 +35,6 @@
 <link rel="preload" href="/study-elasticsearch-with-ktor/custom.css" as="style">
 <link rel="stylesheet" href="/study-elasticsearch-with-ktor/custom.css" media="all">
 
-<link rel="alternate" type="application/rss+xml" href="http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/index.xml" title="Study Elasticsearch with Ktor" />
 
 
 <!-- Made with Geekdoc theme https://github.com/thegeeklab/hugo-geekdoc -->
@@ -630,7 +629,7 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
             
             
                 <span class="flex">
-                    <a href="/study-elasticsearch-with-ktor/elasticsearch/indexmodules/analysis/" class="gdoc-nav__entry ">
+                    <a href="/study-elasticsearch-with-ktor/elasticsearch/indexmodules/analysis/" class="gdoc-nav__entry is-active">
                         Analysis
                     </a>
                 </span>
@@ -975,7 +974,23 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
         
     
     
-        <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/' href='/study-elasticsearch-with-ktor/'><span itemprop='name'>Study Elasticsearch with Ktor</span></a><meta itemprop='position' content='2' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>Elasticsearch</span><meta itemprop='position' content='3' /></li>
+        
+        
+        
+        
+    
+    
+        
+        
+        
+        
+    
+    
+        <li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/' href='/study-elasticsearch-with-ktor/'><span itemprop='name'>Study Elasticsearch with Ktor</span></a><meta itemprop='position' content='2' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/elasticsearch/' href='/study-elasticsearch-with-ktor/elasticsearch/'><span itemprop='name'>Elasticsearch</span></a><meta itemprop='position' content='3' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><a itemscope itemtype='https://schema.org/WebPage' itemprop='item' itemid='/study-elasticsearch-with-ktor/elasticsearch/indexmodules/' href='/study-elasticsearch-with-ktor/elasticsearch/indexmodules/'><span itemprop='name'>Index modules</span></a><meta itemprop='position' content='4' /></li><li> / </li><li itemprop='itemListElement' itemscope itemtype='https://schema.org/ListItem'><span itemprop='name'>Analysis</span><meta itemprop='position' content='5' /></li>
+    
+
+    
+
     
 
     
@@ -986,9 +1001,16 @@ License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL
     
 </div>
 
+
     <article class="gdoc-markdown gdoc-markdown__align--left">
-        <h1>Elasticsearch</h1>
-        
+        <h1>Analysis</h1>
+        <p>Index analysis module は文字列フィールドを term に分割するための解析器の構成を登録するためのレジストリとして機能します。</p>
+<ul>
+<li>document を検索可能にするための転置インデックスを作成</li>
+<li>検索 term を生成する <a class="gdoc-markdown__link" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-match-query.html"><code>match</code> query</a> のような高レベルのクエリで使用される</li>
+</ul>
+<p>詳細は <a class="gdoc-markdown__link" href="/study-elasticsearch-with-ktor/elasticsearch/textanalysis/">テキスト解析</a> の章を参照してください。</p>
+
 
     </article>
 

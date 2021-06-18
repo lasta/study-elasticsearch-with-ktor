@@ -8,6 +8,15 @@
     <language>ja-jp</language>
     <lastBuildDate>Mon, 31 May 2021 19:00:37 +0900</lastBuildDate><atom:link href="http://lasta.github.io/study-elasticsearch-with-ktor/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Analysis</title>
+      <link>http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/analysis/</link>
+      <pubDate>Fri, 18 Jun 2021 15:12:27 +0900</pubDate>
+      
+      <guid>http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/indexmodules/analysis/</guid>
+      <description>Index analysis module は文字列フィールドを term に分割するための解析器の構成を登録するためのレジストリとして機能します。 document を検索可能にするための転置インデックス</description>
+    </item>
+    
+    <item>
       <title>本番運用時の重要な設定</title>
       <link>http://lasta.github.io/study-elasticsearch-with-ktor/elasticsearch/setup/configure/important/</link>
       <pubDate>Fri, 11 Jun 2021 12:16:00 +0900</pubDate>

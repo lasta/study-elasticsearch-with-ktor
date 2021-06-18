@@ -3,7 +3,7 @@ package me.lasta
 import io.ktor.locations.KtorExperimentalLocationsAPI
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
-import me.lasta.plugins.*
+import me.lasta.studyelasticsearchwithktor.server.plugins.*
 
 @KtorExperimentalLocationsAPI
 fun main() {

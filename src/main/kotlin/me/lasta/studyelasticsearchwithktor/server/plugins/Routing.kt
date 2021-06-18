@@ -1,4 +1,4 @@
-package me.lasta.plugins
+package me.lasta.studyelasticsearchwithktor.server.plugins
 
 import io.ktor.application.Application
 import io.ktor.application.call

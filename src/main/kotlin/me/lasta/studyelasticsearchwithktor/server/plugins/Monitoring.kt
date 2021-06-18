@@ -1,4 +1,4 @@
-package me.lasta.plugins
+package me.lasta.studyelasticsearchwithktor.server.plugins
 
 import io.ktor.features.*
 import org.slf4j.event.*

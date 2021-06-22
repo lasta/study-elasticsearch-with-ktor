@@ -1,0 +1,296 @@
+PUT http://localhost:9200/country
+Content-Type: application/json
+
+{
+  "mappings": {
+    "properties": {
+      "the_geom": {
+        "type": "geo_shape"
+      },
+      "featurecla": {
+        "type": "text"
+      },
+      "scalerank": {
+        "type": "integer"
+      },
+      "LABELRANK": {
+        "type": "integer"
+      },
+      "SOVEREIGNT": {
+        "type": "text"
+      },
+      "SOV_A3": {
+        "type": "text"
+      },
+      "ADM0_DIF": {
+        "type": "integer"
+      },
+      "LEVEL": {
+        "type": "integer"
+      },
+      "TYPE": {
+        "type": "text"
+      },
+      "ADMIN": {
+        "type": "text"
+      },
+      "ADM0_A3": {
+        "type": "text"
+      },
+      "GEOU_DIF": {
+        "type": "integer"
+      },
+      "GEOUNIT": {
+        "type": "text"
+      },
+      "GU_A3": {
+        "type": "text"
+      },
+      "SU_DIF": {
+        "type": "integer"
+      },
+      "SUBUNIT": {
+        "type": "text"
+      },
+      "SU_A3": {
+        "type": "text"
+      },
+      "BRK_DIFF": {
+        "type": "integer"
+      },
+      "NAME": {
+        "type": "text"
+      },
+      "NAME_LONG": {
+        "type": "text"
+      },
+      "BRK_A3": {
+        "type": "text"
+      },
+      "BRK_NAME": {
+        "type": "text"
+      },
+      "BRK_GROUP": {
+        "type": "text"
+      },
+      "ABBREV": {
+        "type": "text"
+      },
+      "POSTAL": {
+        "type": "text"
+      },
+      "FORMAL_EN": {
+        "type": "text"
+      },
+      "FORMAL_FR": {
+        "type": "text"
+      },
+      "NAME_CIAWF": {
+        "type": "text"
+      },
+      "NOTE_ADM0": {
+        "type": "text"
+      },
+      "NOTE_BRK": {
+        "type": "text"
+      },
+      "NAME_SORT": {
+        "type": "text"
+      },
+      "NAME_ALT": {
+        "type": "text"
+      },
+      "MAPCOLOR7": {
+        "type": "integer"
+      },
+      "MAPCOLOR8": {
+        "type": "integer"
+      },
+      "MAPCOLOR9": {
+        "type": "integer"
+      },
+      "MAPCOLOR13": {
+        "type": "integer"
+      },
+      "POP_EST": {
+        "type": "long"
+      },
+      "POP_RANK": {
+        "type": "integer"
+      },
+      "GDP_MD_EST": {
+        "type": "double"
+      },
+      "POP_YEAR": {
+        "type": "integer"
+      },
+      "LASTCENSUS": {
+        "type": "integer"
+      },
+      "GDP_YEAR": {
+        "type": "integer"
+      },
+      "ECONOMY": {
+        "type": "text"
+      },
+      "INCOME_GRP": {
+        "type": "text"
+      },
+      "WIKIPEDIA": {
+        "type": "integer"
+      },
+      "FIPS_10_": {
+        "type": "text"
+      },
+      "ISO_A2": {
+        "type": "text"
+      },
+      "ISO_A3": {
+        "type": "text"
+      },
+      "ISO_A3_EH": {
+        "type": "text"
+      },
+      "ISO_N3": {
+        "type": "text"
+      },
+      "UN_A3": {
+        "type": "text"
+      },
+      "WB_A2": {
+        "type": "text"
+      },
+      "WB_A3": {
+        "type": "text"
+      },
+      "WOE_ID": {
+        "type": "integer"
+      },
+      "WOE_ID_EH": {
+        "type": "integer"
+      },
+      "WOE_NOTE": {
+        "type": "text"
+      },
+      "ADM0_A3_IS": {
+        "type": "text"
+      },
+      "ADM0_A3_US": {
+        "type": "text"
+      },
+      "ADM0_A3_UN": {
+        "type": "integer"
+      },
+      "ADM0_A3_WB": {
+        "type": "integer"
+      },
+      "CONTINENT": {
+        "type": "text"
+      },
+      "REGION_UN": {
+        "type": "text"
+      },
+      "SUBREGION": {
+        "type": "text"
+      },
+      "REGION_WB": {
+        "type": "text"
+      },
+      "NAME_LEN": {
+        "type": "integer"
+      },
+      "LONG_LEN": {
+        "type": "integer"
+      },
+      "ABBREV_LEN": {
+        "type": "integer"
+      },
+      "TINY": {
+        "type": "integer"
+      },
+      "HOMEPART": {
+        "type": "integer"
+      },
+      "MIN_ZOOM": {
+        "type": "double"
+      },
+      "MIN_LABEL": {
+        "type": "double"
+      },
+      "MAX_LABEL": {
+        "type": "double"
+      },
+      "NE_ID": {
+        "type": "long"
+      },
+      "WIKIDATAID": {
+        "type": "text"
+      },
+      "NAME_AR": {
+        "type": "text"
+      },
+      "NAME_BN": {
+        "type": "text"
+      },
+      "NAME_DE": {
+        "type": "text"
+      },
+      "NAME_EN": {
+        "type": "text"
+      },
+      "NAME_ES": {
+        "type": "text"
+      },
+      "NAME_FR": {
+        "type": "text"
+      },
+      "NAME_EL": {
+        "type": "text"
+      },
+      "NAME_HI": {
+        "type": "text"
+      },
+      "NAME_HU": {
+        "type": "text"
+      },
+      "NAME_ID": {
+        "type": "text"
+      },
+      "NAME_IT": {
+        "type": "text"
+      },
+      "NAME_JA": {
+        "type": "text"
+      },
+      "NAME_KO": {
+        "type": "text"
+      },
+      "NAME_NL": {
+        "type": "text"
+      },
+      "NAME_PL": {
+        "type": "text"
+      },
+      "NAME_PT": {
+        "type": "text"
+      },
+      "NAME_RU": {
+        "type": "text"
+      },
+      "NAME_SV": {
+        "type": "text"
+      },
+      "NAME_TR": {
+        "type": "text"
+      },
+      "NAME_VI": {
+        "type": "text"
+      },
+      "NAME_ZH": {
+        "type": "text"
+      }
+    }
+  }
+}
+
+###

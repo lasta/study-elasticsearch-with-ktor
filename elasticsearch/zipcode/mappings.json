@@ -11,21 +11,33 @@
         "type": "text"
       },
       "prefecture_ruby": {
-        "type": "text"
+        "type": "text",
+        "copy_to": "address_ruby"
       },
       "city_ruby": {
-        "type": "text"
+        "type": "text",
+        "copy_to": "address_ruby"
       },
       "town_ruby": {
+        "type": "text",
+        "copy_to": "address_ruby"
+      },
+      "address_ruby": {
         "type": "text"
       },
       "prefecture_name": {
-        "type": "text"
+        "type": "text",
+        "copy_to": "address_name"
       },
       "city_name": {
-        "type": "text"
+        "type": "text",
+        "copy_to": "address_name"
       },
       "town_name": {
+        "type": "text",
+        "copy_to": "address_name"
+      },
+      "address_name": {
         "type": "text"
       },
       "represents_by_plural_codes": {

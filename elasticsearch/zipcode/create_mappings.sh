@@ -12,11 +12,11 @@ function create_mappings_json_file() {
 }
 
 function delete_mappings() {
-  curl -X DELETE --location "${ES_HOST}/${INDEX_NAME}"
+  curl -X DELETE --location "${ES_HOST}/${INDEX_NAME}?pretty"
 }
 
 function create_mappings_into_elasticsearch() {
-  curl -X PUT --location "${ES_HOST}/${INDEX_NAME}" \
+  curl -X PUT --location "${ES_HOST}/${INDEX_NAME}?pretty" \
     -H "Content-Type: application/json" \
     --data-binary "@${MAPPING_JSON}"
 }

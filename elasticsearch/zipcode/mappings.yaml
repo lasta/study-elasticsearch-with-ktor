@@ -1,4 +1,14 @@
 ---
+settings:
+  analysis:
+    tokenizer:
+      zipcode_edge_ngram_tokenizer:
+        type: edge_ngram
+        min_gram: 1
+        max_gram: 7
+    analyzer:
+      zipcode_edge_ngram_analyzer:
+        tokenizer: zipcode_edge_ngram_tokenizer
 mappings:
   properties:
     admin_code:
@@ -7,6 +17,11 @@ mappings:
       type: text
     zipcode:
       type: text
+      analyzer: standard
+      fields:
+        edges:
+          type: text
+          analyzer: zipcode_edge_ngram_analyzer
     prefecture_ruby:
       type: text
       copy_to: address_ruby
@@ -16,8 +31,6 @@ mappings:
     town_ruby:
       type: text
       copy_to: address_ruby
-    address_ruby:
-      type: text
     prefecture_name:
       type: text
       copy_to: address_name
@@ -27,8 +40,6 @@ mappings:
     town_name:
       type: text
       copy_to: address_name
-    address_name:
-      type: text
     represents_by_plural_codes:
       type: boolean
     assigned_street_number_to_each_subdivision:
@@ -41,3 +52,8 @@ mappings:
       type: integer
     update_reason:
       type: integer
+    # for searching (copied fields)
+    address_ruby:
+      type: text
+    address_name:
+      type: text

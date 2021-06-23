@@ -1,4 +1,20 @@
 {
+  "settings": {
+    "analysis": {
+      "tokenizer": {
+        "zipcode_edge_ngram_tokenizer": {
+          "type": "edge_ngram",
+          "min_gram": 1,
+          "max_gram": 7
+        }
+      },
+      "analyzer": {
+        "zipcode_edge_ngram_analyzer": {
+          "tokenizer": "zipcode_edge_ngram_tokenizer"
+        }
+      }
+    }
+  },
   "mappings": {
     "properties": {
       "admin_code": {
@@ -8,7 +24,14 @@
         "type": "text"
       },
       "zipcode": {
-        "type": "text"
+        "type": "text",
+        "analyzer": "standard",
+        "fields": {
+          "edges": {
+            "type": "text",
+            "analyzer": "zipcode_edge_ngram_analyzer"
+          }
+        }
       },
       "prefecture_ruby": {
         "type": "text",
@@ -22,9 +45,6 @@
         "type": "text",
         "copy_to": "address_ruby"
       },
-      "address_ruby": {
-        "type": "text"
-      },
       "prefecture_name": {
         "type": "text",
         "copy_to": "address_name"
@@ -36,9 +56,6 @@
       "town_name": {
         "type": "text",
         "copy_to": "address_name"
-      },
-      "address_name": {
-        "type": "text"
       },
       "represents_by_plural_codes": {
         "type": "boolean"
@@ -57,6 +74,12 @@
       },
       "update_reason": {
         "type": "integer"
+      },
+      "address_ruby": {
+        "type": "text"
+      },
+      "address_name": {
+        "type": "text"
       }
     }
   }

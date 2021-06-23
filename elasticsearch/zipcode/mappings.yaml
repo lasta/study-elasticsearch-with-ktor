@@ -1,0 +1,33 @@
+---
+mappings:
+  properties:
+    admin_code:
+      type: text
+    zipcode3:
+      type: text
+    zipcode:
+      type: text
+    prefecture_ruby:
+      type: text
+    city_ruby:
+      type: text
+    town_ruby:
+      type: text
+    prefecture_name:
+      type: text
+    city_name:
+      type: text
+    town_name:
+      type: text
+    represents_by_plural_codes:
+      type: boolean
+    assigned_street_number_to_each_subdivision:
+      type: boolean
+    has_city_block:
+      type: boolean
+    represents_plural_towns:
+      type: boolean
+    update_status:
+      type: integer
+    update_reason:
+      type: integer

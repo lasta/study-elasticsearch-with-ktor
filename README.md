@@ -20,10 +20,22 @@ Converter from "Admin 0 - Countries" shapefile by Natural Earth to NDJSON for El
 ### before to run
 1. download countries archive from [this page](https://www.naturalearthdata.com/downloads/10m-cultural-vectors/)
 2. unzip it
-3. put shapefile into data
+3. put files into `data/country`
 
 ```
 etc/converter/country/data
 └── ne_10m_admin_0_countries.shp
 ```
 
+## Zipcode data converter
+Converter from "13TOKYO.CSV" csv file by JAPAN POST HOLDINGS Co., Ltd.
+
+### before to run
+1. download zipcode archive from [this page](https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html)
+    * click "東京都" to download it.
+2. unzip it
+3. put file into `data/zipcode_13tokyo`
+4. convert `Shift_JIS` to `UTF-8`
+   ```shell
+   nkf -Lu -w 13TOKYO.CSV > utf8_13tokyo.csv
+   ```

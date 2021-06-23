@@ -44,6 +44,9 @@ dependencies {
         exclude("javax.media", "jai_core")
     }
 
+    implementation("de.brudaswen.kotlinx.serialization:kotlinx-serialization-csv:2.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:1.2.1")
+
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junit_version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_version")

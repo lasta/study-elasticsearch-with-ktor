@@ -22,9 +22,10 @@ class BulkIndexer(
     suspend inline fun <reified T> index(
         bulkData: Sequence<Pair<IndexAction, T>>,
         indexName: String,
-        deleteBeforeIndexing: Boolean = false
+        deleteBeforeIndexing: Boolean = false,
+        httpClient: HttpClient = HttpClient(Apache)
     ): HttpResponse =
-        HttpClient(Apache).use { client ->
+        httpClient.use { client ->
             if (deleteBeforeIndexing) {
                 val deletionResponse: HttpResponse = client.post(
                     host = host,

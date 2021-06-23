@@ -1,13 +1,8 @@
 package me.lasta.studyelasticsearchwithktor.converter.country
 
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.apache.Apache
-import io.ktor.client.request.header
-import io.ktor.client.request.put
 import io.ktor.client.statement.HttpResponse
 import kotlinx.coroutines.runBlocking
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import me.lasta.studyelasticsearchwithktor.converter.BulkIndexer
 import org.geotools.data.DataStoreFinder
 import org.geotools.data.FeatureSource
 import org.geotools.feature.FeatureCollection
@@ -31,7 +26,7 @@ fun main(args: Array<String>) {
 
     val collection: FeatureCollection<SimpleFeatureType, SimpleFeature> = source.getFeatures(filter)
 
-    val bulkActions: Sequence<String> = sequence {
+    val bulkData: Sequence<Pair<IndexAction, NaturalEarthCountry>> = sequence {
         collection.features().use { features ->
             while (features.hasNext()) {
                 val feature: SimpleFeature = features.next()
@@ -42,19 +37,13 @@ fun main(args: Array<String>) {
                         id = feature.id
                     )
                 )
-                yield(Json.encodeToString(action))
-                yield(Json.encodeToString(document))
+                yield(action to document)
             }
         }
     }
 
-    val response: HttpResponse = HttpClient(Apache).use { client ->
-        runBlocking {
-            client.put("http://localhost:9200/_bulk") {
-                header("Content-Type", "application/x-ndjson")
-                body = bulkActions.joinToString("\n") + "\n"
-            }
-        }
+    val response: HttpResponse = runBlocking {
+        BulkIndexer().index(bulkData, indexName = "country", deleteBeforeIndexing = true)
     }
     println(response)
 }

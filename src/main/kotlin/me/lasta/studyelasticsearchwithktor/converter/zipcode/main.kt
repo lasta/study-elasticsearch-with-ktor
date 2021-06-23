@@ -1,16 +1,9 @@
 package me.lasta.studyelasticsearchwithktor.converter.zipcode
 
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.apache.Apache
-import io.ktor.client.request.header
-import io.ktor.client.request.put
-import io.ktor.client.statement.HttpResponse
-import io.ktor.utils.io.core.use
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.csv.Csv
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
+import me.lasta.studyelasticsearchwithktor.converter.BulkIndexer
 import me.lasta.studyelasticsearchwithktor.converter.country.IndexAction
 import me.lasta.studyelasticsearchwithktor.converter.country.IndexActionAndMetadata
 import java.nio.file.Paths
@@ -26,7 +19,7 @@ fun main(args: Array<String>) {
     val csv = Csv { hasHeaderRecord = false }
     val records: List<Zipcode> = csv.decodeFromString(ListSerializer(Zipcode.serializer()), csvFile.readText())
 
-    val bulkActions: Sequence<String> = sequence {
+    val bulkData: Sequence<Pair<IndexAction, ZipcodeDocument>> = sequence {
         records.forEachIndexed { index, record ->
             val action = IndexAction(
                 IndexActionAndMetadata(
@@ -34,11 +27,10 @@ fun main(args: Array<String>) {
                     id = index.toString()
                 )
             )
-            yield(Json.encodeToString(action))
 
             val document = ZipcodeDocument(
                 adminCode = record.adminCode,
-                zipcode5 =  record.zipcode5,
+                zipcode5 = record.zipcode5,
                 zipcode = record.zipcode,
                 prefectureRuby = record.prefectureRuby,
                 cityRuby = record.cityRuby,
@@ -53,17 +45,12 @@ fun main(args: Array<String>) {
                 updateStatus = record.updateStatus,
                 updateReason = record.updateReason,
             )
-            yield(Json.encodeToString(document))
+            yield(action to document)
         }
     }
 
-    val response: HttpResponse = HttpClient(Apache).use { client ->
-        runBlocking {
-            client.put("http://localhost:9200/_bulk") {
-                header("Content-Type", "application/x-ndjson")
-                body = bulkActions.joinToString("\n") + "\n"
-            }
-        }
+    val response = runBlocking {
+        BulkIndexer().index(bulkData, indexName = "zipcode", deleteBeforeIndexing = true)
     }
     println(response)
 }

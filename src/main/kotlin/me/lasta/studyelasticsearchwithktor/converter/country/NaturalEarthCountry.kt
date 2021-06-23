@@ -2,6 +2,7 @@ package me.lasta.studyelasticsearchwithktor.converter.country
 
 import kotlinx.serialization.Serializable
 
+// TODO: change names from snake_case to camelCase
 @Serializable
 data class NaturalEarthCountry(
     val featurecla: String,

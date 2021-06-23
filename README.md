@@ -39,3 +39,11 @@ Converter from "13TOKYO.CSV" csv file by JAPAN POST HOLDINGS Co., Ltd.
    ```shell
    nkf -Lu -w 13TOKYO.CSV > utf8_13tokyo.csv
    ```
+
+## TODO
+- [ ] unit test
+- [ ] integration test
+- [ ] split project
+- [ ] implement demo (vue.js? compose?)
+- [ ] autocompletion with Japanese input on zipcode index
+- [ ] avoid garbling in country index

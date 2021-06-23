@@ -1,0 +1,51 @@
+label: Scenario to test
+parameters:
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 1
+    args:
+      input_value: 1
+      expected_total: 3941
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 2
+    args:
+      input_value: 17
+      expected_total: 189
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 3
+    args:
+      input_value: 170
+      expected_total: 71
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 4
+    args:
+      input_value: 1706
+      expected_total: 61
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 5
+    args:
+      input_value: 17060
+      expected_total: 61
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 6
+    args:
+      input_value: 170601
+      expected_total: 10
+  - label: completion 1706014 (東京都豊島区東池袋サンシャイン６０（１４階）) step 7
+    args:
+      input_value: 1706014
+      expected_total: 1
+cases:
+  - label: autocomplete with zipcode
+    request:
+      path: "/zipcode/_search"
+      params:
+        pretty: true
+      body:
+        type: json
+        data:
+          query:
+            bool:
+              must:
+                - term:
+                    zipcode.edges:
+                      value: !argument input_value
+    response:
+      status_code: 200
+      body:
+        - describe: .hits.total.value
+          should:
+            equal: !argument expected_total

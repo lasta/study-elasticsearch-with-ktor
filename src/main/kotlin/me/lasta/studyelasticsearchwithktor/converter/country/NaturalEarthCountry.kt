@@ -1,102 +1,196 @@
 package me.lasta.studyelasticsearchwithktor.converter.country
 
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-// TODO: change names from snake_case to camelCase
 @Serializable
 data class NaturalEarthCountry(
+    @SerialName("featurecla")
     val featurecla: String,
+    @SerialName("scalerank")
     val scalerank: Int,
+    @SerialName("labelrank")
     val labelrank: Int,
+    @SerialName("sovereignt")
     val sovereignt: String,
-    val sov_a3: String,
-    val adm0_dif: Int,
+    @SerialName("sov_a3")
+    val sovA3: String,
+    @SerialName("adm0_dif")
+    val adm0Dif: Int,
+    @SerialName("level")
     val level: Int,
+    @SerialName("type")
     val type: String,
+    @SerialName("admin")
     val admin: String,
-    val adm0_a3: String,
-    val geou_dif: Int,
+    @SerialName("adm0_a3")
+    val adm0A3: String,
+    @SerialName("geou_dif")
+    val geouDif: Int,
+    @SerialName("geounit")
     val geounit: String,
-    val gu_a3: String,
-    val su_dif: Int,
+    @SerialName("gu_a3")
+    val guA3: String,
+    @SerialName("su_dif")
+    val suDif: Int,
+    @SerialName("subunit")
     val subunit: String,
-    val su_a3: String,
-    val brk_diff: Int,
+    @SerialName("su_a3")
+    val suA3: String,
+    @SerialName("brk_diff")
+    val brkDiff: Int,
+    @SerialName("name")
     val name: String,
-    val name_long: String,
-    val brk_a3: String,
-    val brk_name: String,
-    val brk_group: String,
+    @SerialName("name_long")
+    val nameLong: String,
+    @SerialName("brk_a3")
+    val brkA3: String,
+    @SerialName("brk_name")
+    val brkName: String,
+    @SerialName("brk_group")
+    val brkGroup: String,
+    @SerialName("abbrev")
     val abbrev: String,
+    @SerialName("postal")
     val postal: String,
-    val formal_en: String,
-    val formal_fr: String,
-    val name_ciawf: String,
-    val note_adm0: String,
-    val note_brk: String,
-    val name_sort: String,
-    val name_alt: String,
+    @SerialName("formal_en")
+    val formalEn: String,
+    @SerialName("formal_fr")
+    val formalFr: String,
+    @SerialName("name_ciawf")
+    val nameCiawf: String,
+    @SerialName("note_adm0")
+    val noteAdm0: String,
+    @SerialName("note_brk")
+    val noteBrk: String,
+    @SerialName("name_sort")
+    val nameSort: String,
+    @SerialName("name_alt")
+    val nameAlt: String,
+    @SerialName("mapcolor7")
     val mapcolor7: Int,
+    @SerialName("mapcolor8")
     val mapcolor8: Int,
+    @SerialName("mapcolor9")
     val mapcolor9: Int,
+    @SerialName("mapcolor13")
     val mapcolor13: Int,
-    val pop_est: Long,
-    val pop_rank: Int,
-    val gdp_md_est: Double,
-    val pop_year: Int,
+    @SerialName("pop_est")
+    val popEst: Long,
+    @SerialName("pop_rank")
+    val popRank: Int,
+    @SerialName("gdp_md_est")
+    val gdpMdEst: Double,
+    @SerialName("pop_year")
+    val popYear: Int,
+    @SerialName("lastcensus")
     val lastcensus: Int,
-    val gdp_year: Int,
+    @SerialName("gdp_year")
+    val gdpYear: Int,
+    @SerialName("economy")
     val economy: String,
-    val income_grp: String,
+    @SerialName("income_grp")
+    val incomeGrp: String,
+    @SerialName("wikipedia")
     val wikipedia: Int,
-    val fips_10_: String,
-    val iso_a2: String,
-    val iso_a3: String,
-    val iso_a3_eh: String,
-    val iso_n3: String,
-    val un_a3: String,
-    val wb_a2: String,
-    val wb_a3: String,
-    val woe_id: Int,
-    val woe_id_eh: Int,
-    val woe_note: String,
-    val adm0_a3_is: String,
-    val adm0_a3_us: String,
-    val adm0_a3_un: Int,
-    val adm0_a3_wb: Int,
+    @SerialName("fips_10_")
+    val fips10: String,
+    @SerialName("iso_a2")
+    val isoA2: String,
+    @SerialName("iso_a3")
+    val isoA3: String,
+    @SerialName("iso_a3_eh")
+    val isoA3Eh: String,
+    @SerialName("iso_n3")
+    val isoN3: String,
+    @SerialName("un_a3")
+    val unA3: String,
+    @SerialName("wb_a2")
+    val wbA2: String,
+    @SerialName("wb_a3")
+    val wbA3: String,
+    @SerialName("woe_id")
+    val woeId: Int,
+    @SerialName("woe_id_eh")
+    val woeIdEh: Int,
+    @SerialName("woe_note")
+    val woeNote: String,
+    @SerialName("adm0_a3_is")
+    val adm0A3Is: String,
+    @SerialName("adm0_a3_us")
+    val adm0A3Us: String,
+    @SerialName("adm0_a3_un")
+    val adm0A3Un: Int,
+    @SerialName("adm0_a3_wb")
+    val adm0A3Wb: Int,
+    @SerialName("continent")
     val continent: String,
-    val region_un: String,
+    @SerialName("region_un")
+    val regionUn: String,
+    @SerialName("subregion")
     val subregion: String,
-    val region_wb: String,
-    val name_len: Int,
-    val long_len: Int,
-    val abbrev_len: Int,
+    @SerialName("region_wb")
+    val regionWb: String,
+    @SerialName("name_len")
+    val nameLen: Int,
+    @SerialName("long_len")
+    val longLen: Int,
+    @SerialName("abbrev_len")
+    val abbrevLen: Int,
+    @SerialName("tiny")
     val tiny: Int,
+    @SerialName("homepart")
     val homepart: Int,
-    val min_zoom: Double,
-    val min_label: Double,
-    val max_label: Double,
-    val ne_id: Long,
+    @SerialName("min_zoom")
+    val minZoom: Double,
+    @SerialName("min_label")
+    val minLabel: Double,
+    @SerialName("max_label")
+    val maxLabel: Double,
+    @SerialName("ne_id")
+    val neId: Long,
+    @SerialName("wikidataid")
     val wikidataid: String,
-    val name_ar: String,
-    val name_bn: String,
-    val name_de: String,
-    val name_en: String,
-    val name_es: String,
-    val name_fr: String,
-    val name_el: String,
-    val name_hi: String,
-    val name_hu: String,
-    val name_id: String,
-    val name_it: String,
-    val name_ja: String,
-    val name_ko: String,
-    val name_nl: String,
-    val name_pl: String,
-    val name_pt: String,
-    val name_ru: String,
-    val name_sv: String,
-    val name_tr: String,
-    val name_vi: String,
-    val name_zh: String,
+    @SerialName("name_ar")
+    val nameAr: String,
+    @SerialName("name_bn")
+    val nameBn: String,
+    @SerialName("name_de")
+    val nameDe: String,
+    @SerialName("name_en")
+    val nameEn: String,
+    @SerialName("name_es")
+    val nameEs: String,
+    @SerialName("name_fr")
+    val nameFr: String,
+    @SerialName("name_el")
+    val nameEl: String,
+    @SerialName("name_hi")
+    val nameHi: String,
+    @SerialName("name_hu")
+    val nameHu: String,
+    @SerialName("name_id")
+    val nameId: String,
+    @SerialName("name_it")
+    val nameIt: String,
+    @SerialName("name_ja")
+    val nameJa: String,
+    @SerialName("name_ko")
+    val nameKo: String,
+    @SerialName("name_nl")
+    val nameNl: String,
+    @SerialName("name_pl")
+    val namePl: String,
+    @SerialName("name_pt")
+    val namePt: String,
+    @SerialName("name_ru")
+    val nameRu: String,
+    @SerialName("name_sv")
+    val nameSv: String,
+    @SerialName("name_tr")
+    val nameTr: String,
+    @SerialName("name_vi")
+    val nameVi: String,
+    @SerialName("name_zh")
+    val nameZh: String,
 )

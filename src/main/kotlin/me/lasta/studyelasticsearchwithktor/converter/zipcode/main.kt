@@ -9,6 +9,7 @@ import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexActionAndMetad
 import java.nio.file.Paths
 import kotlin.system.exitProcess
 
+@OptIn(kotlinx.serialization.ExperimentalSerializationApi::class)
 fun main(args: Array<String>) {
     if (args.size != 1) {
         println("path to csv file is required.")

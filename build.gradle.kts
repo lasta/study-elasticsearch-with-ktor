@@ -58,6 +58,10 @@ dependencies {
     testImplementation("io.mockk:mockk:$mockk_version")
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+    kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
+}
+
 tasks.test {
     useJUnitPlatform()
 

@@ -41,8 +41,8 @@ Converter from "13TOKYO.CSV" csv file by JAPAN POST HOLDINGS Co., Ltd.
    ```
 
 ## TODO
+- [x] integration test
 - [ ] unit test
-- [ ] integration test
 - [ ] implement demo (vue.js? compose?)
 - [ ] autocompletion with Japanese input on zipcode index
 - [ ] avoid garbling in country index

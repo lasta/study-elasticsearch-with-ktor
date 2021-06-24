@@ -43,22 +43,10 @@ internal class ElasticsearchClientImplTest {
             httpClient = HttpClient(MockEngine) {
                 engine {
                     addHandler { request ->
-                        if (request.method != HttpMethod.Put) {
-                            error("Unhandled HTTP method: ${request.method}")
-                        }
-                        if (request.url != Url("http://localhost:9200/_bulk")) {
-                            error("Unhandled URL: ${request.url}")
-                        }
+                        assertEquals(HttpMethod.Put, request.method)
+                        assertEquals(Url("http://localhost:9200/_bulk"), request.url)
                         val actualBodyContentType = request.body.contentType.toString()
-                        if (actualBodyContentType != "application/x-ndjson") {
-                            error(
-                                """
-                                Illegal Content-Type was set.
-                                Required: "application/x-ndjson"
-                                Actual:  ${request.headers["Content-Type"]}
-                                """.trimIndent()
-                            )
-                        }
+                        assertEquals("application/x-ndjson", actualBodyContentType)
                         val actualBodyContent = request.body.toByteReadPacket().copy().readerUTF8().readText()
                         val expectedBodyContent = """
                             {"index":{"_index":"index_name","_id":"1"}}
@@ -66,15 +54,8 @@ internal class ElasticsearchClientImplTest {
                             {"index":{"_index":"index_name","_id":"2"}}
                             {"key":"value2"}
                             """.trimIndent() + "\n"
-                        if (actualBodyContent != expectedBodyContent) {
-                            error(
-                                """
-                                Illegal body value was set.
-                                Required: $expectedBodyContent
-                                Actual: ${request.body}
-                                """
-                            )
-                        }
+                        assertEquals(expectedBodyContent, actualBodyContent)
+
                         respond("OK")
                     }
                 }
@@ -104,22 +85,11 @@ internal class ElasticsearchClientImplTest {
             httpClient = HttpClient(MockEngine) {
                 engine {
                     addHandler { request ->
-                        if (request.method != HttpMethod.Post) {
-                            error("Unhandled HTTP method: ${request.method}")
-                        }
-                        if (request.url != Url("http://localhost:9200/${indexName}/_delete_by_query")) {
-                            error("Unhandled URL: ${request.url}")
-                        }
-                        if (request.body.contentType != ContentType.Application.Json) {
-                            error(
-                                """
-                                Illegal Content-Type was set.
-                                Required: ${ContentType.Application.Json}
-                                Actual:  ${request.headers["Content-Type"]}
-                                """.trimIndent()
-                            )
-                        }
-                        val actualBodyContent = request.body.toByteReadPacket().copy().readerUTF8().readText().trimIndent()
+                        assertEquals(HttpMethod.Post, request.method)
+                        assertEquals(Url("http://localhost:9200/${indexName}/_delete_by_query"), request.url)
+                        assertEquals(ContentType.Application.Json, request.body.contentType)
+                        val actualBodyContent =
+                            request.body.toByteReadPacket().copy().readerUTF8().readText().trimIndent()
                         val expectedBodyContent = """
                             {
                                 "query": {
@@ -127,15 +97,8 @@ internal class ElasticsearchClientImplTest {
                                 }
                             }
                             """.trimIndent()
-                        if (actualBodyContent != expectedBodyContent) {
-                            error(
-                                """
-                                Illegal body value was set.
-                                Required: $expectedBodyContent
-                                Actual: ${request.body}
-                                """
-                            )
-                        }
+                        assertEquals(expectedBodyContent, actualBodyContent)
+
                         respond("OK")
                     }
                 }
@@ -154,6 +117,4 @@ internal class ElasticsearchClientImplTest {
             assertEquals("OK", actualContent)
         }
     }
-
-
 }

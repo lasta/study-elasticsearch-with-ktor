@@ -1,4 +1,4 @@
-package me.lasta.studyelasticsearchwithktor.converter.country
+package me.lasta.studyelasticsearchwithktor.converter
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

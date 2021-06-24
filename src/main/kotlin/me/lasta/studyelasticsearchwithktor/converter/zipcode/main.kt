@@ -4,8 +4,8 @@ import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.csv.Csv
 import me.lasta.studyelasticsearchwithktor.converter.indexer.BulkIndexer
-import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexAction
-import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexActionAndMetadata
+import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexAction
+import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexActionAndMetadata
 import java.nio.file.Paths
 import kotlin.system.exitProcess
 

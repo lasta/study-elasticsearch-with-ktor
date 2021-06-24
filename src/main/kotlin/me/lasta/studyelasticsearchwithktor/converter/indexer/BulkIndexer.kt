@@ -12,6 +12,7 @@ import io.ktor.http.contentType
 import io.netty.handler.codec.http.HttpScheme
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexAction
 
 class BulkIndexer(
     val host: String = "localhost",

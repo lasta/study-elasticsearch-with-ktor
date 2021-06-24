@@ -3,8 +3,8 @@ package me.lasta.studyelasticsearchwithktor.converter.country
 import io.ktor.client.statement.HttpResponse
 import kotlinx.coroutines.runBlocking
 import me.lasta.studyelasticsearchwithktor.converter.indexer.BulkIndexer
-import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexAction
-import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexActionAndMetadata
+import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexAction
+import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexActionAndMetadata
 import org.geotools.data.DataStoreFinder
 import org.geotools.data.FeatureSource
 import org.geotools.feature.FeatureCollection

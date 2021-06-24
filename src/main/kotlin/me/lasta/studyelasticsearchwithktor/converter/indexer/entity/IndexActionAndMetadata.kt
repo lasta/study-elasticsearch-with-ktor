@@ -1,4 +1,4 @@
-package me.lasta.studyelasticsearchwithktor.converter.indexer
+package me.lasta.studyelasticsearchwithktor.converter.indexer.entity
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

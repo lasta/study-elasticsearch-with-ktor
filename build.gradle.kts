@@ -52,6 +52,7 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$kotlinx_serialization_core_version")
 
     testImplementation("io.ktor:ktor-server-tests:$ktor_version")
+    testImplementation("io.ktor:ktor-client-mock:$ktor_version")
     testImplementation("org.junit.jupiter:junit-jupiter:$junit_version")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$junit_version")
     testImplementation("org.junit.jupiter:junit-jupiter-params:$junit_version")

@@ -3,9 +3,9 @@ package me.lasta.studyelasticsearchwithktor.converter.zipcode
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.csv.Csv
-import me.lasta.studyelasticsearchwithktor.converter.BulkIndexer
-import me.lasta.studyelasticsearchwithktor.converter.IndexAction
-import me.lasta.studyelasticsearchwithktor.converter.IndexActionAndMetadata
+import me.lasta.studyelasticsearchwithktor.converter.indexer.BulkIndexer
+import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexAction
+import me.lasta.studyelasticsearchwithktor.converter.indexer.IndexActionAndMetadata
 import java.nio.file.Paths
 import kotlin.system.exitProcess
 

@@ -1,4 +1,4 @@
-package me.lasta.studyelasticsearchwithktor.converter
+package me.lasta.studyelasticsearchwithktor.converter.indexer
 
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.apache.Apache

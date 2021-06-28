@@ -1,8 +1,9 @@
 package me.lasta.studyelasticsearchwithktor.converter.country
 
-import io.ktor.client.statement.HttpResponse
+import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.runBlocking
-import me.lasta.studyelasticsearchwithktor.converter.indexer.BulkIndexer
+import me.lasta.studyelasticsearchwithktor.converter.indexer.ElasticsearchClient
+import me.lasta.studyelasticsearchwithktor.converter.indexer.ElasticsearchClientImpl
 import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexAction
 import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexActionAndMetadata
 import org.geotools.data.DataStoreFinder
@@ -44,8 +45,18 @@ fun main(args: Array<String>) {
         }
     }
 
-    val response: HttpResponse = runBlocking {
-        BulkIndexer().index(bulkData, indexName = "country", deleteBeforeIndexing = true)
+    val elasticsearchClient: ElasticsearchClient = ElasticsearchClientImpl()
+    val deleteResponse = runBlocking {
+        elasticsearchClient.deleteAll("country")
     }
+    if (deleteResponse.status != HttpStatusCode.OK) {
+        throw IllegalStateException(deleteResponse.toString())
+    }
+    println(deleteResponse)
+
+    val response = runBlocking {
+        elasticsearchClient.bulkIndex(bulkData, NaturalEarthCountry.serializer())
+    }
+
     println(response)
 }

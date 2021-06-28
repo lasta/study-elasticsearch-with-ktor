@@ -1,9 +1,11 @@
 package me.lasta.studyelasticsearchwithktor.converter.zipcode
 
+import io.ktor.http.HttpStatusCode
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.csv.Csv
-import me.lasta.studyelasticsearchwithktor.converter.indexer.BulkIndexer
+import me.lasta.studyelasticsearchwithktor.converter.indexer.ElasticsearchClient
+import me.lasta.studyelasticsearchwithktor.converter.indexer.ElasticsearchClientImpl
 import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexAction
 import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexActionAndMetadata
 import java.nio.file.Paths
@@ -29,29 +31,23 @@ fun main(args: Array<String>) {
                 )
             )
 
-            val document = ZipcodeDocument(
-                adminCode = record.adminCode,
-                zipcode5 = record.zipcode5,
-                zipcode = record.zipcode,
-                prefectureRuby = record.prefectureRuby,
-                cityRuby = record.cityRuby,
-                townRuby = record.townRuby,
-                prefectureName = record.prefectureName,
-                cityName = record.cityName,
-                townName = record.townName,
-                representsByPluralCodes = record.representsByPluralCodes == 1,
-                assignedStreetNumberToEachSubdivision = record.assignedStreetNumberToEachSubdivision == 1,
-                hasCityBlock = record.hasCityBlock == 1,
-                representsPluralTowns = record.representsPluralTowns == 1,
-                updateStatus = record.updateStatus,
-                updateReason = record.updateReason,
-            )
+            val document = record.toDocument()
             yield(action to document)
         }
     }
 
+    val elasticsearchClient: ElasticsearchClient = ElasticsearchClientImpl()
+    val deleteResponse = runBlocking {
+        elasticsearchClient.deleteAll("zipcode")
+    }
+
+    if (deleteResponse.status != HttpStatusCode.OK) {
+        throw IllegalStateException(deleteResponse.toString())
+    }
+    println(deleteResponse)
+
     val response = runBlocking {
-        BulkIndexer().index(bulkData, indexName = "zipcode", deleteBeforeIndexing = true)
+        elasticsearchClient.bulkIndex(bulkData, ZipcodeDocument.serializer())
     }
     println(response)
 }

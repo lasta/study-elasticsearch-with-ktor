@@ -15,8 +15,8 @@ import kotlinx.serialization.json.Json
 import me.lasta.studyelasticsearchwithktor.converter.indexer.entity.IndexAction
 
 internal class ElasticsearchClientImpl(
-    private val httpClientSupplier: () -> HttpClient = { HttpClient(Apache) },
-    private val baseUrl: String = "http://localhost:9200"
+    override val httpClientSupplier: () -> HttpClient = { HttpClient(Apache) },
+    override val baseUrl: String = "http://localhost:9200"
 ) : ElasticsearchClient {
     override suspend fun <T> bulkIndex(
         bulkData: Sequence<Pair<IndexAction, T>>,
